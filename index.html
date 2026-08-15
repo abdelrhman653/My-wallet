@@ -73,7 +73,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
 
   <section class="card">
     <h2>🛒 شراء الشهر</h2>
-    <div class="month-label">⭐ أفضل 4 أسهم لهذا الشهر — الاختيار يتغير مع كل تحديث للأسعار</div>
+    <div class="month-label">🏆 سهم الأسبوع — الاختيار يتغير مع كل تحديث للأسعار</div>
     <div style="margin-top:10px" class="checklist" id="checks"></div>
     <button class="btn primary" style="width:100%;margin-top:10px" onclick="savePurchases()">✓ حفظ ما تم شراؤه</button>
   </section>
@@ -113,16 +113,16 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
   </section>
 
   <section class="card reco-card">
-    <div class="reco-title"><h2 style="margin:0">⭐ أفضل 4 أسهم لهذا الشهر</h2><span class="smart-badge" id="recoBadge">تحليل متغير من الـ12 سهم</span></div>
+    <div class="reco-title"><h2 style="margin:0">🏆 سهم الأسبوع</h2><span class="smart-badge" id="recoBadge">تحليل أسبوعي متغير من الـ12 سهم</span></div>
     <div class="reco" id="recommendations"></div>
-    <div class="note" style="margin-top:10px">💡 المبلغ لا يتوزع بالتساوي. كل سهم يأخذ نسبة من مبلغ الاستثمار حسب تقييم فرصته؛ السهم الأقوى يأخذ حصة أكبر، ويمكن أن يتكرر ترشيحه إذا ظلت فرصته قوية.</div>
+    <div class="note" style="margin-top:10px">💡 كل أسبوع يتم اختيار سهم واحد فقط كأفضل فرصة. إذا كان نفس السهم هو الذي اشتريته الأسبوع السابق، يظهر لك اقتراح بديل من أفضل الأسهم الأخرى.</div>
   </section>
 
   <section class="card smart" id="smartBox">
     <div class="smart-head"><h2 style="margin:0">🧠 مساعد المحفظة — قرار الشهر</h2><span class="smart-badge" id="smartStatus">يعتمد على الأسعار + أوزانك</span></div>
     <div class="smart-grid">
       <div class="smart-box">
-        <h3>🛒 الـ4 أسهم لهذا الشهر</h3>
+        <h3>🛒 سهم الأسبوع والبديل</h3>
         <div id="smartBuys"></div>
       </div>
       <div class="smart-box">
@@ -163,9 +163,9 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
     <h2>🧠 قواعد الاستخدام</h2>
     <div class="note">
       1) مبلغ الاستثمار الشهري تحدده أنت، ويمكنك زيادته أو تقليله في أي وقت.<br>
-      2) الموقع يفحص الأسهم الـ12 ويختار أفضل 4 حسب تقييم الفرصة، وليس حسب مجموعات ثابتة.<br>
+      2) الموقع يفحص الأسهم الـ12 كل أسبوع ويختار أفضل سهم واحد، وإذا كان هو نفس سهم الأسبوع السابق يعرض أفضل بديل.<br>
       3) السهم القوي جدًا يمكن أن يتكرر ترشيحه حتى لو كان ضمن ترشيح سابق؛ لا يتم استبعاده لمجرد أنه ظهر قبل ذلك.<br>
-      4) المبلغ لا يتوزع بالتساوي؛ التوزيع يتغير حسب قوة الفرصة ووزن السهم واحتياج المحفظة.<br>
+      4) مبلغ الاستثمار الأسبوعي يذهب للسهم الذي تختاره؛ وإذا كان هناك بديل، يمكنك اختيار البديل بدلًا منه.<br>
       5) عند إغلاق السوق تُعرض آخر أسعار جلسة مكتملة ولا يتم طلب تحديث جديد حتى تفتح الجلسة التالية.<br>
       6) عند بدء السحب، احسب النسبة السنوية من قيمة المحفظة في بداية كل سنة ثم قسمها على 12.<br>
       7) اقتراح البيع يفضل السهم الأعلى زيادة عن وزنه، ويحسب تقريبًا قيمة البيع وعدد الأسهم من سعره الحالي.
@@ -275,34 +275,73 @@ function allocateByOpportunity(ranked,total){
  let j=0; while(rem>0 && order.length){amounts[order[j%order.length]]++;rem--;j++;}
  return amounts;
 }
+function getISOWeekKey(date=new Date()){
+ const d=new Date(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate()));
+ const day=d.getUTCDay()||7; d.setUTCDate(d.getUTCDate()+4-day);
+ const yearStart=new Date(Date.UTC(d.getUTCFullYear(),0,1));
+ const week=Math.ceil((((d-yearStart)/86400000)+1)/7);
+ return `${d.getUTCFullYear()}-W${String(week).padStart(2,'0')}`;
+}
+function previousISOWeekKey(){
+ const d=new Date(); d.setDate(d.getDate()-7); return getISOWeekKey(d);
+}
+function getWeeklyPurchaseMap(){
+ try{return JSON.parse(localStorage.getItem('weeklyPurchases12')||'{}')}catch(e){return {}}
+}
+function setWeeklyPurchaseMap(x){localStorage.setItem('weeklyPurchases12',JSON.stringify(x))}
+function getLastWeekBought(){
+ const map=getWeeklyPurchaseMap(), wk=previousISOWeekKey();
+ return stocks.filter(s=>map[`${wk}-${s.t}`]).map(s=>s.t);
+}
+function getWeeklyRecommendation(){
+ const pv=+document.getElementById('portfolio').value||0;
+ const wk=getISOWeekKey();
+ const key=`weeklyRecommendation12-${wk}`;
+ try{
+   const cached=JSON.parse(localStorage.getItem(key)||'null');
+   if(cached && stocks.some(s=>s.t===cached.primary)) return cached;
+ }catch(e){}
+ const ranked=rankRecommendations(pv);
+ const primary=ranked[0];
+ const previous=getLastWeekBought();
+ const second=previous.includes(primary.t)?ranked.find(s=>s.t!==primary.t):null;
+ const rec={primary:primary?.t||null,secondary:second?.t||null,createdAt:Date.now()};
+ localStorage.setItem(key,JSON.stringify(rec));
+ return rec;
+}
 function renderRecommendations(){
  const pv=+document.getElementById('portfolio').value||0;
  const investment=getInvestment();
- const ranked=rankRecommendations(pv);
- const top4=ranked.slice(0,4);
- const amounts=allocateByOpportunity(top4,investment);
- lastRecommendations=top4.map((s,i)=>({s,amount:amounts[i],score:opportunityScore(s,pv)}));
- document.getElementById('recommendations').innerHTML=top4.map((s,i)=>{
-   const actual=getActualWeight(s,pv), gap=s.w-actual, score=lastRecommendations[i].score;
-   const label=!positions[s.t]?'غير موجود في محفظتك':gap>0.25?'أقل من وزنه':gap<-0.25?'أعلى من وزنه':'قريب من الوزن';
-   const exceptional=score>=82;
-   return `<div class="item ${i===0?'top-pick':''}"><span class="rank">${i+1}</span><div class="ticker-big">${s.t}</div><div class="opportunity">${exceptional?'🔥 فرصة قوية جدًا':'📌 فرصة جيدة'} · تقييم ${score}/100</div><div class="allocation">${money(amounts[i])}</div><div class="small ${s.c>=0?'green':'red'}">${s.c>=0?'↑':'↓'} ${s.c>0?'+':''}${s.c.toFixed(2)}% اليوم</div><div class="small muted">${label}</div><div class="small muted">وزنه المستهدف ${s.w}%</div></div>`;
- }).join('');
- const totalShown=amounts.reduce((a,b)=>a+b,0);
- document.getElementById('recoBadge').textContent=`توزيع ذكي من الـ12 سهم · ${money(totalShown)}`;
- document.getElementById('checks').innerHTML=top4.map(t=>`<label class="check"><input type="checkbox" ${saved[`current-${t.t}`]?'checked':''} onchange="togglePurchase('current','${t.t}',this.checked)"> تم شراء ${t.t} — ${money(amounts[top4.findIndex(x=>x.t===t.t)])}</label>`).join('');
- renderSmartBuy('current',top4);
- renderAllocationExplain(top4,amounts);
+ const rec=getWeeklyRecommendation();
+ const primary=stocks.find(s=>s.t===rec.primary);
+ const secondary=rec.secondary?stocks.find(s=>s.t===rec.secondary):null;
+ const lastWeek=getLastWeekBought();
+ const score=primary?opportunityScore(primary,pv):0;
+ let html='';
+ if(primary){
+   const wasBoughtLastWeek=lastWeek.includes(primary.t);
+   html+=`<div class="item top-pick"><span class="rank">🏆</span><div class="ticker-big">${primary.t}</div><div class="opportunity">${wasBoughtLastWeek?'🔁 ما زال أفضل فرصة':'⭐ أفضل فرصة هذا الأسبوع'} · تقييم ${score}/100</div><div class="allocation">${money(investment)}</div><div class="small ${primary.c>=0?'green':'red'}">${primary.c>=0?'↑':'↓'} ${primary.c>0?'+':''}${primary.c.toFixed(2)}% اليوم</div><div class="small muted">مبلغ الأسبوع كله يذهب لهذا السهم إذا اخترته.</div></div>`;
+ }
+ if(secondary){
+   const sScore=opportunityScore(secondary,pv);
+   html+=`<div class="item"><span class="rank">🥈</span><div class="ticker-big">${secondary.t}</div><div class="opportunity">🥈 اقتراح بديل — تقييم ${sScore}/100</div><div class="allocation">${money(investment)}</div><div class="small ${secondary.c>=0?'green':'red'}">${secondary.c>=0?'↑':'↓'} ${secondary.c>0?'+':''}${secondary.c.toFixed(2)}% اليوم</div><div class="small muted">ظهر لأن اقتراح الأسبوع الأول هو نفس سهم الأسبوع السابق.</div></div>`;
+ }
+ document.getElementById('recommendations').innerHTML=html||'<div class="item">لا يوجد ترشيح متاح حاليًا.</div>';
+ document.getElementById('recoBadge').textContent=`أسبوع ${getISOWeekKey()} · ${secondary?'يوجد بديل':'سهم واحد فقط'}`;
+ const choices=secondary?[primary,secondary]:[primary];
+ document.getElementById('checks').innerHTML=choices.filter(Boolean).map((s,i)=>`<label class="check"><input type="checkbox" ${saved[`current-${s.t}`]?'checked':''} onchange="togglePurchase('current','${s.t}',this.checked)"> ${i===0?'تم شراء':'شراء البديل'} ${s.t} — ${money(investment)}</label>`).join('');
+ renderSmartBuy('current',choices.filter(Boolean));
+ const explain=document.getElementById('allocationExplain'); if(explain) explain.innerHTML=`<div><b>نظام الأسبوع:</b> يتم اختيار أفضل سهم واحد من الـ12. إذا كان هو نفس السهم الذي اشتريته الأسبوع السابق، يظهر سهم ثانٍ كبديل حتى تستطيع التنويع.</div>`;
 }
+
 function renderSmartBuy(m,ranked){
  const box=document.getElementById('smartBuys'); if(!box)return;
  const pv=+document.getElementById('portfolio').value||0;
- const amounts=allocateByOpportunity(ranked,getInvestment());
- box.innerHTML=ranked.map((s,i)=>{const score=opportunityScore(s,pv);return `<div class="signal"><div><b>${i+1}. ${s.t}</b><div class="small muted">تقييم الفرصة ${score}/100 · ${s.c>=0?'صاعد':'هابط'} ${s.c>0?'+':''}${s.c.toFixed(2)}%</div><div class="buy-meter"><span style="width:${score}%"></span></div></div><div class="tag">${money(amounts[i])}</div></div>`}).join('');
+ box.innerHTML=ranked.filter(Boolean).map((s,i)=>{const score=opportunityScore(s,pv);return `<div class="signal"><div><b>${i===0?'🏆':'🥈'} ${s.t}</b><div class="small muted">تقييم الفرصة ${score}/100 · ${s.c>=0?'صاعد':'هابط'} ${s.c>0?'+':''}${s.c.toFixed(2)}%</div><div class="buy-meter"><span style="width:${score}%"></span></div></div><div class="tag">${i===0?'سهم الأسبوع':'بديل'}</div></div>`}).join('');
  const top=ranked[0],sig=document.getElementById('smartSignal');
- if(top){const score=opportunityScore(top,pv),actual=getActualWeight(top,pv),gap=top.w-actual;sig.innerHTML=`<b>${top.t}</b> هو صاحب أعلى تقييم فرصة حاليًا (${score}/100).<br><br><span class="${top.c>=0?'green':'red'}">حركة اليوم: ${top.c>0?'+':''}${top.c.toFixed(2)}%</span><br>الفجوة عن الوزن المستهدف: <b>${gap>=0?'+':''}${gap.toFixed(2)} نقطة مئوية</b>`;}
- const st=document.getElementById('smartStatus'); if(st)st.textContent=liveConnected?'بيانات سوق متصلة':'بيانات يدوية / آخر تحديث محفوظ';
+ if(top){const score=opportunityScore(top,pv);sig.innerHTML=`<b>${top.t}</b> هو اقتراح الأسبوع الحالي بتقييم ${score}/100. لا يتغير الترشيح خلال نفس الأسبوع؛ يتجدد عند بداية أسبوع جديد.`;}
 }
+
 function renderAllocationExplain(ranked,amounts){
  const box=document.getElementById('allocationExplain'); if(!box)return;
  const total=getInvestment()||0;
@@ -310,30 +349,32 @@ function renderAllocationExplain(ranked,amounts){
 }
 function togglePurchase(m,t,v){
  const key=`${m}-${t}`;
+ const week=getISOWeekKey();
+ const weeklyKey=`${week}-${t}`;
+ const weekly=getWeeklyPurchaseMap();
  const portfolioEl=document.getElementById('portfolio');
  let current=+portfolioEl.value||0;
- const rec=lastRecommendations.find(x=>x.s.t===t);
- const amount=rec?Math.round(rec.amount):0;
+ const investment=getInvestment();
+ const amount=Math.round(investment);
  if(v){
-   if(!saved[key]){
-     purchaseAmounts[key]=amount;
-     current+=amount;
-   }
+   if(!saved[key]) current+=amount;
    saved[key]=true;
+   weekly[weeklyKey]=true;
  }else{
-   if(saved[key]){
-     current-=+(purchaseAmounts[key]||0);
-     if(current<0) current=0;
-   }
+   if(saved[key]){current-=+(purchaseAmounts[key]||amount);if(current<0)current=0;}
    saved[key]=false;
    delete purchaseAmounts[key];
+   delete weekly[weeklyKey];
  }
+ if(v) purchaseAmounts[key]=amount;
  portfolioEl.value=Math.round(current);
+ setWeeklyPurchaseMap(weekly);
  localStorage.setItem('purchases12',JSON.stringify(saved));
  localStorage.setItem('purchaseAmounts12',JSON.stringify(purchaseAmounts));
  updateAll();
  alert(v?`تم تسجيل شراء ${t} وإضافة ${money(amount)} إلى قيمة المحفظة الحالية.`:`تم إلغاء شراء ${t} وخصم المبلغ المسجل من قيمة المحفظة الحالية.`);
 }
+
 function savePurchases(){localStorage.setItem('purchases12',JSON.stringify(saved));alert('تم حفظ حالة المشتريات على هذا الجهاز.')}
 function renderAlloc(){document.getElementById('alloc').innerHTML=stocks.map(s=>`<div class="alloc-row"><b>${s.t}</b><div class="bar"><span style="width:${s.w*4.5}%"></span></div><span>${s.w}%</span></div>`).join('');}
 function renderPositions(){
