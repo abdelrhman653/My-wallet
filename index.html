@@ -68,7 +68,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
     <h2>💵 مبلغ الاستثمار الشهري</h2>
     <label>المبلغ الذي تريد استثماره هذا الشهر</label>
     <div class="field"><input id="monthlyInvestment" type="number" value="5000" min="0" step="100" oninput="updateAll()"><span>جنيه</span></div>
-    <div class="small muted" style="margin-top:8px">غيّر المبلغ كما تريد، والتوزيع على الأسهم الأربعة يتغير تلقائيًا حسب قوة كل فرصة.</div>
+    <div class="small muted" style="margin-top:8px">المبلغ ده هو إجمالي استثمار الشهر. يتم تقسيمه على 4 أسابيع تلقائيًا، وكل أسبوع يذهب مبلغ الأسبوع إلى السهم الذي تختاره.</div>
   </section>
 
   <section class="card">
@@ -200,9 +200,44 @@ function getInvestment(){
  const el=document.getElementById('monthlyInvestment');
  return Math.max(0,+el?.value||0);
 }
+function getMonthKey(date=new Date()){
+ return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}`;
+}
+function getMonthWeekSlot(date=new Date()){
+ // الميزانية الشهرية لها 4 خانات أسبوعية؛ الأيام الأخيرة من الشهر تدخل في الخانة الرابعة.
+ return Math.min(4, Math.floor((date.getDate()-1)/7)+1);
+}
+function getWeeklyPurchaseAmounts(){
+ try{return JSON.parse(localStorage.getItem('weeklyPurchaseAmounts12')||'{}')}catch(e){return {}}
+}
+function setWeeklyPurchaseAmounts(x){localStorage.setItem('weeklyPurchaseAmounts12',JSON.stringify(x))}
+function getMonthSpent(){
+ const month=getMonthKey();
+ const map=getWeeklyPurchaseAmounts();
+ return Object.entries(map).reduce((sum,[key,val])=>key.startsWith(month+'-')?sum+(Number(val)||0):sum,0);
+}
+function getWeeklyInvestment(){
+ const monthly=getInvestment();
+ if(!monthly) return 0;
+ const spent=getMonthSpent();
+ const remaining=Math.max(0,monthly-spent);
+ if(!remaining) return 0;
+ const slot=getMonthWeekSlot();
+ const slotsLeft=Math.max(1,4-slot+1);
+ const pv=+document.getElementById('portfolio').value||0;
+ const rec=getWeeklyRecommendation();
+ const primary=stocks.find(s=>s.t===rec.primary);
+ const score=primary?opportunityScore(primary,pv):50;
+ // لا نقسم بالتساوي: قوة الفرصة تعدّل حصة الأسبوع، مع حد أقصى يمنع صرف الشهر كله في أول أسبوع.
+ const factor=0.7+(Math.max(0,Math.min(100,score))/100)*0.6;
+ const assumedFutureFactor=1;
+ const amount=remaining*(factor/(factor+Math.max(0,slotsLeft-1)*assumedFutureFactor));
+ return Math.round(amount/10)*10;
+}
 function updateAll(){
  const pv=+document.getElementById('portfolio').value||0, rate=+document.getElementById('rate').value||0;
  const investment=getInvestment();
+ const weeklyInvestment=investment/4;
  document.getElementById('rateText').textContent=rate+'%';
  document.getElementById('annual').textContent=money(pv*rate/100);
  document.getElementById('monthly').textContent=money(pv*rate/100/12);
@@ -311,7 +346,7 @@ function getWeeklyRecommendation(){
 }
 function renderRecommendations(){
  const pv=+document.getElementById('portfolio').value||0;
- const investment=getInvestment();
+ const investment=getWeeklyInvestment();
  const rec=getWeeklyRecommendation();
  const primary=stocks.find(s=>s.t===rec.primary);
  const secondary=rec.secondary?stocks.find(s=>s.t===rec.secondary):null;
@@ -320,14 +355,14 @@ function renderRecommendations(){
  let html='';
  if(primary){
    const wasBoughtLastWeek=lastWeek.includes(primary.t);
-   html+=`<div class="item top-pick"><span class="rank">🏆</span><div class="ticker-big">${primary.t}</div><div class="opportunity">${wasBoughtLastWeek?'🔁 ما زال أفضل فرصة':'⭐ أفضل فرصة هذا الأسبوع'} · تقييم ${score}/100</div><div class="allocation">${money(investment)}</div><div class="small ${primary.c>=0?'green':'red'}">${primary.c>=0?'↑':'↓'} ${primary.c>0?'+':''}${primary.c.toFixed(2)}% اليوم</div><div class="small muted">مبلغ الأسبوع كله يذهب لهذا السهم إذا اخترته.</div></div>`;
+   html+=`<div class="item top-pick"><span class="rank">🏆</span><div class="ticker-big">${primary.t}</div><div class="opportunity">${wasBoughtLastWeek?'🔁 ما زال أفضل فرصة':'⭐ أفضل فرصة هذا الأسبوع'} · تقييم ${score}/100</div><div class="allocation">${money(investment)}</div><div class="small ${primary.c>=0?'green':'red'}">${primary.c>=0?'↑':'↓'} ${primary.c>0?'+':''}${primary.c.toFixed(2)}% اليوم</div><div class="small muted">مبلغ هذا الأسبوع فقط يذهب لهذا السهم إذا اخترته. الشهر = 4 أسابيع.</div></div>`;
  }
  if(secondary){
    const sScore=opportunityScore(secondary,pv);
    html+=`<div class="item"><span class="rank">🥈</span><div class="ticker-big">${secondary.t}</div><div class="opportunity">🥈 اقتراح بديل — تقييم ${sScore}/100</div><div class="allocation">${money(investment)}</div><div class="small ${secondary.c>=0?'green':'red'}">${secondary.c>=0?'↑':'↓'} ${secondary.c>0?'+':''}${secondary.c.toFixed(2)}% اليوم</div><div class="small muted">ظهر لأن اقتراح الأسبوع الأول هو نفس سهم الأسبوع السابق.</div></div>`;
  }
  document.getElementById('recommendations').innerHTML=html||'<div class="item">لا يوجد ترشيح متاح حاليًا.</div>';
- document.getElementById('recoBadge').textContent=`أسبوع ${getISOWeekKey()} · ${secondary?'يوجد بديل':'سهم واحد فقط'}`;
+ document.getElementById('recoBadge').textContent=`أسبوع ${getISOWeekKey()} · ${secondary?'يوجد بديل':'سهم واحد فقط'} · ${money(investment)} لهذا الأسبوع`;
  const choices=secondary?[primary,secondary]:[primary];
  document.getElementById('checks').innerHTML=choices.filter(Boolean).map((s,i)=>`<label class="check"><input type="checkbox" ${saved[`current-${s.t}`]?'checked':''} onchange="togglePurchase('current','${s.t}',this.checked)"> ${i===0?'تم شراء':'شراء البديل'} ${s.t} — ${money(investment)}</label>`).join('');
  renderSmartBuy('current',choices.filter(Boolean));
@@ -345,30 +380,35 @@ function renderSmartBuy(m,ranked){
 function renderAllocationExplain(ranked,amounts){
  const box=document.getElementById('allocationExplain'); if(!box)return;
  const total=getInvestment()||0;
- box.innerHTML=ranked.map((s,i)=>{const pct=total?amounts[i]/total*100:0;return `<div class="allocation-row"><b>${s.t}</b><div class="mini-bar"><span style="width:${pct}%"></span></div><strong>${pct.toFixed(1)}% · ${money(amounts[i])}</strong></div>`}).join('')+`<div class="small muted">الإجمالي: ${money(total)}. النسب تتغير مع الأسعار وتقييم الفرص، وليست 25% لكل سهم.</div>`;
+ box.innerHTML=ranked.map((s,i)=>{const pct=total?amounts[i]/total*100:0;return `<div class="allocation-row"><b>${s.t}</b><div class="mini-bar"><span style="width:${pct}%"></span></div><strong>${pct.toFixed(1)}% · ${money(amounts[i])}</strong></div>`}).join('')+`<div class="small muted">إجمالي الشهر: ${money(total)}. المبلغ الأسبوعي يتغير حسب قوة فرصة الأسبوع، مع الحفاظ على سقف الميزانية الشهرية وعدم صرفها كلها في أول أسبوع.</div>`;
 }
 function togglePurchase(m,t,v){
  const key=`${m}-${t}`;
  const week=getISOWeekKey();
  const weeklyKey=`${week}-${t}`;
+ const monthWeekKey=`${getMonthKey()}-${getMonthWeekSlot()}-${t}`;
  const weekly=getWeeklyPurchaseMap();
+ const weeklyAmounts=getWeeklyPurchaseAmounts();
  const portfolioEl=document.getElementById('portfolio');
  let current=+portfolioEl.value||0;
- const investment=getInvestment();
+ const investment=getWeeklyInvestment();
  const amount=Math.round(investment);
  if(v){
    if(!saved[key]) current+=amount;
    saved[key]=true;
    weekly[weeklyKey]=true;
+   weeklyAmounts[monthWeekKey]=amount;
  }else{
    if(saved[key]){current-=+(purchaseAmounts[key]||amount);if(current<0)current=0;}
    saved[key]=false;
    delete purchaseAmounts[key];
    delete weekly[weeklyKey];
+   delete weeklyAmounts[monthWeekKey];
  }
  if(v) purchaseAmounts[key]=amount;
  portfolioEl.value=Math.round(current);
  setWeeklyPurchaseMap(weekly);
+ setWeeklyPurchaseAmounts(weeklyAmounts);
  localStorage.setItem('purchases12',JSON.stringify(saved));
  localStorage.setItem('purchaseAmounts12',JSON.stringify(purchaseAmounts));
  updateAll();
