@@ -13,14 +13,13 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
 .range{width:100%}.withdraw-box{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.mini{background:#091523;border:1px solid var(--line);padding:11px;border-radius:12px}.mini strong{display:block;font-size:18px;margin-top:4px}
 .stock-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stock{padding:13px;border-radius:14px;border:1px solid var(--line);background:#0a1625}.stock.up{box-shadow:inset 0 0 0 1px rgba(77,223,114,.22)}.stock.down{box-shadow:inset 0 0 0 1px rgba(255,101,116,.18)}.stock .row{display:flex;justify-content:space-between;gap:8px}.ticker{font-weight:800;font-size:16px}.price{font-size:19px;font-weight:800;margin:10px 0 4px}.change{font-size:12px;font-weight:700}.stock input{margin-top:9px;padding:7px;width:100%;background:#07111e;border:1px solid var(--line);border-radius:8px;color:#fff}
 .reco{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.reco .item{background:#0a1826;border:1px solid #2d5537;border-radius:14px;padding:12px;min-width:0;display:flex;flex-direction:column;justify-content:space-between}.reco .item.top-pick{border-color:#38a85a;box-shadow:0 0 0 1px rgba(56,168,90,.12),0 8px 24px rgba(0,0,0,.12)}.reco .ticker-big{font-size:18px;font-weight:900;margin-top:7px}.reco .opportunity{font-size:12px;margin-top:5px;color:#a9c0d5;line-height:1.5}.reco .allocation{font-size:22px;font-weight:900;margin-top:8px}.rank{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#1d6b30;font-weight:800}.amount{font-size:20px;font-weight:800;margin-top:7px}.reco-title{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.month-label{background:#0a1522;border:1px solid var(--line);border-radius:11px;padding:10px;font-size:12px;color:#cbd6e4}.allocation-explain{display:grid;gap:8px}.allocation-row{display:grid;grid-template-columns:70px 1fr 90px;gap:8px;align-items:center;padding:9px 10px;background:#091523;border:1px solid var(--line);border-radius:10px}.allocation-row .mini-bar{height:8px;background:#0a1220;border-radius:99px;overflow:hidden}.allocation-row .mini-bar span{display:block;height:100%;background:linear-gradient(90deg,#2ea94f,#7ad7ff)}
-.groups{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.group{border:1px solid var(--line);border-radius:14px;padding:14px;background:#0a1725}.group h3{margin:0 0 8px}.group ul{margin:0;padding:0 18px 0 0}.group li{margin:6px 0}.group .total{margin-top:10px;padding-top:9px;border-top:1px solid var(--line);font-weight:800}
 .alloc{display:grid;gap:7px}.alloc-row{display:grid;grid-template-columns:55px 1fr 45px;gap:8px;align-items:center;font-size:12px}.bar{height:8px;background:#0a1220;border-radius:99px;overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,#2ea94f,#7ad7ff)}
 .sell{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sell-result{padding:14px;border-radius:13px;background:#0a1724;border:1px solid #38536f}.sell-result strong{font-size:22px}.note{background:#0a1522;border-right:3px solid var(--gold);padding:11px;border-radius:10px;color:#cbd6e4;font-size:12px;line-height:1.7}
 .checklist{display:grid;gap:7px}.check{display:flex;align-items:center;gap:8px;background:#091523;border:1px solid var(--line);padding:9px;border-radius:10px}.check input{accent-color:var(--green)}
 .footer{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.7}
-@media(max-width:900px){.grid{grid-template-columns:1fr}.stock-grid{grid-template-columns:repeat(2,1fr)}.reco{grid-template-columns:repeat(2,1fr)}.groups{grid-template-columns:1fr}.summary{grid-template-columns:1fr 1fr}.summary .metric:last-child{grid-column:1/-1}}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.stock-grid{grid-template-columns:repeat(2,1fr)}.reco{grid-template-columns:repeat(2,1fr)}.summary{grid-template-columns:1fr 1fr}.summary .metric:last-child{grid-column:1/-1}}
 @media(max-width:700px){.reco{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.reco .item{padding:10px}.reco .ticker-big{font-size:17px}.reco .allocation{font-size:19px}.smart-grid{grid-template-columns:1fr}.allocation-row{grid-template-columns:55px 1fr 82px}}
-@media(max-width:520px){.wrap{padding:8px}.card{padding:12px}.stock-grid{grid-template-columns:1fr 1fr;gap:7px}.stock{padding:10px}.summary{grid-template-columns:1fr}.summary .metric:last-child{grid-column:auto}.sell{grid-template-columns:1fr}.top-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px}.top-actions .pill{width:100%;font-size:12px;padding:9px 7px}.brand h1{font-size:20px;line-height:1.2}.brand p{font-size:11px}.reco{grid-template-columns:1fr 1fr}.reco .item{border-radius:11px;padding:9px}.reco .ticker-big{font-size:16px}.reco .allocation{font-size:18px}.smart-badge{font-size:10px;padding:6px 8px}.field input{font-size:18px}.allocation-row{grid-template-columns:50px 1fr 76px;font-size:11px}}
+@media(max-width:520px){.wrap{padding:8px}.card{padding:12px}.stock-grid{grid-template-columns:1fr 1fr;gap:7px}.stock{padding:10px}.summary{grid-template-columns:1fr}.summary .metric:last-child{grid-column:auto}.sell{grid-template-columns:1fr}.top-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px}.top-actions .pill{width:100%;font-size:12px;padding:9px 7px}.top-actions #marketStatus{grid-column:1/-1;order:-1;text-align:center}.brand h1{font-size:20px;line-height:1.2}.brand p{font-size:11px}.reco{grid-template-columns:1fr 1fr}.reco .item{border-radius:11px;padding:9px}.reco .ticker-big{font-size:16px}.reco .allocation{font-size:18px}.smart-badge{font-size:10px;padding:6px 8px}.field input{font-size:18px}.allocation-row{grid-template-columns:50px 1fr 76px;font-size:11px}}
 
 /* Smart assistant */
 .smart{border:1px solid #315a78;background:linear-gradient(145deg,#0b1c2d,#0a1523)}
@@ -41,6 +40,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
 <header>
   <div class="brand"><h1>📈 خطة محفظتي — 12 سهم</h1><p>لوحة متابعة وشراء وسحب للمحفظة طويلة الأجل</p></div>
   <div class="top-actions">
+    <span class="pill" id="marketStatus">جارٍ معرفة حالة السوق…</span>
     <button class="pill" onclick="toggleTheme()">☾ الوضع الداكن</button>
     <button class="pill" onclick="refreshLive()">🔗 تحديث EGX الحقيقي</button>
     <button class="pill" onclick="showHelp()">؟ مساعدة</button>
@@ -162,12 +162,13 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
   <section class="card">
     <h2>🧠 قواعد الاستخدام</h2>
     <div class="note">
-      1) كل شهر تستثمر 5,000 جنيه في مجموعة واحدة فقط، والمبالغ داخل المجموعة حسب الوزن المستهدف.<br>
-      2) بعد الشهر الثالث ترجع للشهر الأول وتكرر الدورة.<br>
-      3) الصناديق الـ1,000 جنيه شهريًا منفصلة عن الأسهم ويمكن إضافتها لاحقًا.<br>
-      4) المساعد يرتب أسهم مجموعة الشهر باستخدام الوزن الفعلي + حركة اليوم؛ لا يعتبر ذلك ضمانًا للربح.<br>
-      5) عند بدء السحب، احسب النسبة السنوية من قيمة المحفظة في بداية كل سنة ثم قسمها على 12.<br>
-      6) اقتراح البيع يفضل السهم الأعلى زيادة عن وزنه، ويحسب تقريبًا قيمة البيع وعدد الأسهم من سعره الحالي.
+      1) مبلغ الاستثمار الشهري تحدده أنت، ويمكنك زيادته أو تقليله في أي وقت.<br>
+      2) الموقع يفحص الأسهم الـ12 ويختار أفضل 4 حسب تقييم الفرصة، وليس حسب مجموعات ثابتة.<br>
+      3) السهم القوي جدًا يمكن أن يتكرر ترشيحه حتى لو كان ضمن ترشيح سابق؛ لا يتم استبعاده لمجرد أنه ظهر قبل ذلك.<br>
+      4) المبلغ لا يتوزع بالتساوي؛ التوزيع يتغير حسب قوة الفرصة ووزن السهم واحتياج المحفظة.<br>
+      5) عند إغلاق السوق تُعرض آخر أسعار جلسة مكتملة ولا يتم طلب تحديث جديد حتى تفتح الجلسة التالية.<br>
+      6) عند بدء السحب، احسب النسبة السنوية من قيمة المحفظة في بداية كل سنة ثم قسمها على 12.<br>
+      7) اقتراح البيع يفضل السهم الأعلى زيادة عن وزنه، ويحسب تقريبًا قيمة البيع وعدد الأسهم من سعره الحالي.
     </div>
   </section>
 </main>
@@ -176,21 +177,19 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
 
 <script>
 const stocks=[
- {t:'COMI',w:20,p:85.30,c:1.43,g:1},
- {t:'TMGH',w:18,p:42.15,c:-0.82,g:2},
- {t:'SWDY',w:16,p:33.80,c:2.11,g:3},
- {t:'FWRY',w:12,p:5.75,c:1.77,g:4},
- {t:'ADIB',w:9,p:56.40,c:-0.79,g:1},
- {t:'ABUK',w:7,p:68.90,c:1.17,g:2},
- {t:'ETEL',w:6,p:39.15,c:2.48,g:3},
- {t:'ALCN',w:5,p:28.60,c:-1.04,g:4},
- {t:'ORHD',w:3,p:18.75,c:1.35,g:1},
- {t:'TALM',w:2,p:15.20,c:-0.98,g:2},
- {t:'MFPC',w:1,p:85.10,c:1.07,g:3},
- {t:'HRHO',w:1,p:24.30,c:-0.82,g:4},
+ {t:'COMI',w:20,p:85.30,c:1.43},
+ {t:'TMGH',w:18,p:42.15,c:-0.82},
+ {t:'SWDY',w:16,p:33.80,c:2.11},
+ {t:'FWRY',w:12,p:5.75,c:1.77},
+ {t:'ADIB',w:9,p:56.40,c:-0.79},
+ {t:'ABUK',w:7,p:68.90,c:1.17},
+ {t:'ETEL',w:6,p:39.15,c:2.48},
+ {t:'ALCN',w:5,p:28.60,c:-1.04},
+ {t:'ORHD',w:3,p:18.75,c:1.35},
+ {t:'TALM',w:2,p:15.20,c:-0.98},
+ {t:'MFPC',w:1,p:85.10,c:1.07},
+ {t:'HRHO',w:1,p:24.30,c:-0.82},
 ];
-const groups={1:['COMI','TMGH','SWDY','FWRY'],2:['ADIB','ABUK','ETEL','ALCN'],3:['ORHD','TALM','MFPC','HRHO']};
-const groupWeights={1:66,2:27,3:7};
 let saved=JSON.parse(localStorage.getItem('purchases12')||'{}');
 let positions=JSON.parse(localStorage.getItem('positions12')||'{}');
 let lastRecommendations=[];
@@ -218,7 +217,7 @@ function renderStocks(){
  box.innerHTML=stocks.map(s=>`<div class="stock ${s.c>=0?'up':'down'}">
   <div class="row"><span class="ticker">${s.t}</span><span class="${s.c>=0?'green':'red'}">${s.c>=0?'↑':'↓'} ${s.c>0?'+':''}${s.c.toFixed(2)}%</span></div>
   <div class="price">${s.p.toFixed(2)}</div>
-  <div class="change ${s.c>=0?'green':'red'}">${s.c>=0?'مرتفع':'منخفض'} اليوم</div>
+  <div class="change ${s.c>=0?'green':'red'}">${marketOpenNow()?'حركة اليوم':'آخر جلسة مكتملة'}</div>
   <input type="number" step=".01" value="${s.p}" aria-label="سعر ${s.t}" onchange="setStock('${s.t}',this.value)">
   <input type="number" step=".01" value="${s.c}" aria-label="تغير ${s.t}" onchange="setChange('${s.t}',this.value)">
  </div>`).join('');
@@ -231,16 +230,26 @@ function getActualWeight(s,pv){
 }
 function opportunityScore(s,pv){
  const actual=getActualWeight(s,pv);
- const under=Math.max(-10,Math.min(10,s.w-actual));
- const pos=positions[s.t]||0;
- const momentum=Math.max(-5,Math.min(5,s.c));
- let score=50 + momentum*5 + under*2.4;
- if(!pos) score+=5;
- if(s.c>=3) score+=10;
- else if(s.c>=2) score+=5;
- if(s.c<=-3) score-=12;
- else if(s.c<=-1) score-=4;
+ const target=s.w||0;
+ const under=Math.max(0,Math.min(12,target-actual));
+ const held=positions[s.t]||0;
+ const momentum=Math.max(-4,Math.min(4,s.c));
+ // التقييم لا يعتمد على التغير اليومي وحده:
+ // وزن السهم + نقصه عن وزنه + الزخم + وجوده في المحفظة.
+ let score=45;
+ score += target*0.9;
+ score += under*2.2;
+ score += momentum*3.0;
+ if(!held) score+=4;
+ else if(actual>target+1.5) score-=7;
+ // هبوط قوي لا يعني شراء أعمى، لكن لا يستبعد السهم تلقائيًا إذا كانت بقية العوامل قوية.
+ if(s.c<=-4) score-=8;
+ // فرصة استثنائية: السهم القوي جدًا لا يُستبعد بسبب ظهوره في ترشيح سابق.
+ if(momentum>=3 && under>=2) score+=7;
  return Math.max(1,Math.min(100,score));
+}
+function rankRecommendations(pv){
+ return stocks.slice().sort((a,b)=>opportunityScore(b,pv)-opportunityScore(a,pv));
 }
 function allocateByOpportunity(ranked,total){
  if(!total || !ranked.length) return ranked.map(()=>0);
@@ -272,7 +281,7 @@ function allocateByOpportunity(ranked,total){
 function renderRecommendations(){
  const pv=+document.getElementById('portfolio').value||0;
  const investment=getInvestment();
- const ranked=stocks.slice().sort((a,b)=>opportunityScore(b,pv)-opportunityScore(a,pv));
+ const ranked=rankRecommendations(pv);
  const top4=ranked.slice(0,4);
  const amounts=allocateByOpportunity(top4,investment);
  lastRecommendations=top4.map((s,i)=>({s,amount:amounts[i],score:opportunityScore(s,pv)}));
@@ -305,10 +314,6 @@ function renderAllocationExplain(ranked,amounts){
 function togglePurchase(m,t,v){saved[`${m}-${t}`]=v;localStorage.setItem('purchases12',JSON.stringify(saved))}
 function savePurchases(){localStorage.setItem('purchases12',JSON.stringify(saved));alert('تم حفظ حالة المشتريات على هذا الجهاز.')}
 function renderAlloc(){document.getElementById('alloc').innerHTML=stocks.map(s=>`<div class="alloc-row"><b>${s.t}</b><div class="bar"><span style="width:${s.w*4.5}%"></span></div><span>${s.w}%</span></div>`).join('');}
-function renderGroups(){
- const box=document.getElementById('groups'); if(!box)return;
- box.innerHTML=[1,2,3].map(m=>{const total=groupWeights[m],arr=groups[m];return `<div class="group"><h3>المجموعة ${m} — الشهر ${m}</h3><ul>${arr.map(t=>{const s=stocks.find(x=>x.t===t);return `<li><b>${t}</b> — وزن أساسي ${s.w}%</li>`}).join('')}</ul><div class="total">هذه الأوزان مرجعية فقط؛ التوصية الشهرية لا تعتمد على مجموعة ثابتة.</div></div>`}).join('');
-}
 function renderPositions(){
  const pv=+document.getElementById('portfolio').value||0;
  const tb=document.getElementById('positions');
@@ -342,23 +347,101 @@ function chooseSell(){
 
 
 const API_PROXY='/api/egx';
-let liveConnected=false;
+const REFRESH_MS=5*60*1000;
+let liveConnected=false, refreshing=false;
+let lastLiveUpdate=Number(localStorage.getItem('last_live_update12')||0);
 let egx30={value:null,change:null,open:null,high:null,low:null};
-function setApiStatus(text){const a=document.getElementById('apiConnectionStatus'),b=document.getElementById('dataStatus');if(a)a.textContent=text;if(b)b.textContent=text;}
-function renderEGX30(){const v=document.getElementById('egx30Value'),c=document.getElementById('egx30Change'),o=document.getElementById('egx30Open'),hl=document.getElementById('egx30HighLow');if(!v)return;v.textContent=Number.isFinite(egx30.value)?egx30.value.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';if(Number.isFinite(egx30.change)){const sign=egx30.change>0?'+':'';c.textContent=`${egx30.change>0?'↑':'↓'} ${sign}${egx30.change.toFixed(2)}% اليوم`;c.className='index-change '+(egx30.change>=0?'green':'red')}else{c.textContent='في انتظار البيانات الحقيقية…';c.className='index-change muted'}o.textContent=Number.isFinite(egx30.open)?egx30.open.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';hl.textContent=(Number.isFinite(egx30.high)&&Number.isFinite(egx30.low))?`${egx30.high.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} / ${egx30.low.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`:'—';}
-async function refreshLive(){setApiStatus('جاري جلب أسعار الأسهم + مؤشر EGX 30…');try{const codes=stocks.map(s=>s.t).join(',');const [quotesRes,indexRes]=await Promise.all([fetch(API_PROXY+'?type=quote&codes='+encodeURIComponent(codes),{headers:{'Accept':'application/json'}}),fetch(API_PROXY+'?type=index&name=EGX30',{headers:{'Accept':'application/json'}})]);if(!quotesRes.ok)throw new Error('Quotes HTTP '+quotesRes.status);if(!indexRes.ok)throw new Error('Index HTTP '+indexRes.status);const raw=await quotesRes.json(),idx=await indexRes.json(),quotes=raw?.data?.quotes||raw?.quotes||[];let ok=0;quotes.forEach(q=>{const s=stocks.find(x=>x.t===q.ticker);if(s&&Number.isFinite(Number(q.price))){s.p=Number(q.price);s.c=Number(q.change_percent??q.changePct??q.percent_change??0)||0;ok++;}});const d=idx?.data||idx;egx30={value:Number(d?.value),change:Number(d?.change_percent??d?.changePct??d?.percent_change),open:Number(d?.open),high:Number(d?.high),low:Number(d?.low)};if(!Number.isFinite(egx30.value))throw new Error('EGX30 value missing');localStorage.setItem('stocks_live_cache',JSON.stringify(stocks.map(s=>({t:s.t,p:s.p,c:s.c}))));localStorage.setItem('egx30_live_cache',JSON.stringify(egx30));liveConnected=true;renderEGX30();renderStocks();renderRecommendations();renderGroups();updateAll();setApiStatus(`متصل ✓ — تم تحديث ${ok} سهم + EGX 30 · ${new Date().toLocaleTimeString('ar-EG')}`);}catch(e){liveConnected=false;renderEGX30();setApiStatus('تعذر تحديث البيانات الحقيقية — راجع OANOR_API_KEY واتصال السيرفر.');alert('فشل تحديث بيانات EGX: '+e.message+'\n\nتأكد أن متغير البيئة اسمه OANOR_API_KEY وأنه مضاف للسيرفر.');}}
+function cairoNow(){return new Date(new Date().toLocaleString('en-US',{timeZone:'Africa/Cairo'}));}
+function marketOpenNow(){
+ const d=cairoNow(), day=d.getDay(), mins=d.getHours()*60+d.getMinutes();
+ // EGX regular trading: Sunday-Thursday, 10:00–14:30 Cairo time.
+ return day>=0 && day<=4 && mins>=600 && mins<870;
+}
+function marketText(){return marketOpenNow()?'🟢 السوق مفتوح — التحديث كل 5 دقائق':'🔴 السوق مغلق — آخر جلسة مكتملة فقط';}
+function setApiStatus(text){const a=document.getElementById('apiConnectionStatus'),b=document.getElementById('dataStatus');if(a)a.textContent=text;if(b)b.textContent=text;const m=document.getElementById('marketStatus');if(m)m.textContent=marketText();}
+function renderEGX30(){
+ const v=document.getElementById('egx30Value'),c=document.getElementById('egx30Change'),o=document.getElementById('egx30Open'),hl=document.getElementById('egx30HighLow');if(!v)return;
+ v.textContent=Number.isFinite(egx30.value)?egx30.value.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
+ if(Number.isFinite(egx30.change)){const sign=egx30.change>0?'+':'';c.textContent=`${egx30.change>0?'↑':'↓'} ${sign}${egx30.change.toFixed(2)}% ${marketOpenNow()?'اليوم':'آخر جلسة'}`;c.className='index-change '+(egx30.change>=0?'green':'red');}
+ else{c.textContent='لا توجد بيانات جلسة مكتملة بعد';c.className='index-change muted';}
+ o.textContent=Number.isFinite(egx30.open)?egx30.open.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
+ hl.textContent=(Number.isFinite(egx30.high)&&Number.isFinite(egx30.low))?`${egx30.high.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} / ${egx30.low.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`:'—';
+}
+function renderMarketStatus(){
+ const m=document.getElementById('marketStatus'); if(m)m.textContent=marketText();
+ const status=marketOpenNow()?'السوق مفتوح — البيانات تتحدث كل 5 دقائق.':'السوق مغلق — الأسعار المعروضة هي آخر جلسة مكتملة.';
+ if(liveConnected && lastLiveUpdate) setApiStatus(`تم آخر تحديث ${new Date(lastLiveUpdate).toLocaleTimeString('ar-EG')} ✓ · ${status}`); else setApiStatus(status);
+ renderEGX30(); renderStocks();
+}
+async function refreshLive(manual=true){
+ if(refreshing)return;
+ if(!marketOpenNow()){
+   renderMarketStatus();
+   if(manual) alert('السوق مغلق الآن. لا يوجد تداول صاعد أو هابط، والمعروض هو آخر سعر من آخر جلسة مكتملة. يمكنك التحديث مرة أخرى عند فتح السوق.');
+   return;
+ }
+ const elapsed=Date.now()-lastLiveUpdate;
+ if(manual && lastLiveUpdate && elapsed<REFRESH_MS){
+   const left=Math.ceil((REFRESH_MS-elapsed)/60000);
+   setApiStatus(`تم التحديث بالفعل ✓ — التحديث القادم بعد حوالي ${left} دقيقة.`);
+   alert(`تم التحديث بالفعل ✓\nلا يمكن التحديث مرة أخرى الآن.\nالتحديث القادم بعد حوالي ${left} دقيقة.`);
+   return;
+ }
+ refreshing=true; setApiStatus('جاري تحديث أسعار الأسهم + مؤشر EGX 30…');
+ try{
+   const codes=stocks.map(s=>s.t).join(',');
+   const [quotesRes,indexRes]=await Promise.all([
+     fetch(API_PROXY+'?type=quote&codes='+encodeURIComponent(codes),{headers:{'Accept':'application/json'}}),
+     fetch(API_PROXY+'?type=index&name=EGX30',{headers:{'Accept':'application/json'}})
+   ]);
+   if(!quotesRes.ok)throw new Error('Quotes HTTP '+quotesRes.status);
+   if(!indexRes.ok)throw new Error('Index HTTP '+indexRes.status);
+   const raw=await quotesRes.json(),idx=await indexRes.json(),quotes=raw?.data?.quotes||raw?.quotes||[];
+   let ok=0;
+   quotes.forEach(q=>{const s=stocks.find(x=>x.t===q.ticker);if(s&&Number.isFinite(Number(q.price))){s.p=Number(q.price);s.c=Number(q.change_percent??q.changePct??q.percent_change??0)||0;ok++;}});
+   if(!ok)throw new Error('لم تصل أسعار الأسهم');
+   const d=idx?.data||idx;
+   egx30={value:Number(d?.value),change:Number(d?.change_percent??d?.changePct??d?.percent_change),open:Number(d?.open),high:Number(d?.high),low:Number(d?.low)};
+   if(!Number.isFinite(egx30.value))throw new Error('EGX30 value missing');
+   lastLiveUpdate=Date.now();
+   localStorage.setItem('last_live_update12',String(lastLiveUpdate));
+   localStorage.setItem('stocks_live_cache',JSON.stringify(stocks.map(s=>({t:s.t,p:s.p,c:s.c}))));
+   localStorage.setItem('egx30_live_cache',JSON.stringify(egx30));
+   liveConnected=true;
+   renderEGX30(); renderStocks(); renderRecommendations(); updateAll();
+   setApiStatus(`تم التحديث ✓ — ${ok} سهم + EGX 30 · ${new Date(lastLiveUpdate).toLocaleTimeString('ar-EG')}`);
+   if(manual) alert(`تم تحديث EGX بنجاح ✓\nتم تحديث ${ok} سهم + EGX 30.`);
+ }catch(e){
+   liveConnected=false;
+   renderMarketStatus();
+   if(manual) alert('فشل تحديث بيانات EGX: '+e.message+'\n\nتأكد أن OANOR_API_KEY مضاف للسيرفر.');
+ }finally{refreshing=false;}
+}
 function loadLiveCache(){
- try{const c=JSON.parse(localStorage.getItem('stocks_live_cache')||'[]');c.forEach(x=>{const s=stocks.find(a=>a.t===x.t);if(s&&Number.isFinite(+x.p)){s.p=+x.p;s.c=+x.c||0;}});const i=JSON.parse(localStorage.getItem('egx30_live_cache')||'null');if(i&&Number.isFinite(+i.value)){egx30={value:+i.value,change:Number.isFinite(+i.change)?+i.change:null,open:Number.isFinite(+i.open)?+i.open:null,high:Number.isFinite(+i.high)?+i.high:null,low:Number.isFinite(+i.low)?+i.low:null};renderEGX30();}}catch(e){}
+ try{
+   const c=JSON.parse(localStorage.getItem('stocks_live_cache')||'[]');
+   c.forEach(x=>{const s=stocks.find(a=>a.t===x.t);if(s&&Number.isFinite(+x.p)){s.p=+x.p;s.c=+x.c||0;}});
+   const i=JSON.parse(localStorage.getItem('egx30_live_cache')||'null');
+   if(i&&Number.isFinite(+i.value)){egx30={value:+i.value,change:Number.isFinite(+i.change)?+i.change:null,open:Number.isFinite(+i.open)?+i.open:null,high:Number.isFinite(+i.high)?+i.high:null,low:Number.isFinite(+i.low)?+i.low:null};}
+   liveConnected=!!c.length;
+ }catch(e){}
+}
+function startAutoRefresh(){
+ setInterval(()=>{
+   renderMarketStatus();
+   if(marketOpenNow() && !refreshing && (!lastLiveUpdate || Date.now()-lastLiveUpdate>=REFRESH_MS)) refreshLive(false);
+ },60000);
+ if(marketOpenNow() && (!lastLiveUpdate || Date.now()-lastLiveUpdate>=REFRESH_MS)) refreshLive(false);
 }
 
 function resetDemo(){
  liveConnected=false;
- setApiStatus('بيانات تجريبية — اضغط تحديث لجلب الأسعار الحقيقية.');
+ setApiStatus('بيانات العرض الحالية — استخدم تحديث EGX أثناء فتح السوق.');
  stocks.forEach((s,i)=>{s.p=[85.30,42.15,33.80,5.75,56.40,68.90,39.15,28.60,18.75,15.20,85.10,24.30][i];s.c=[1.43,-.82,2.11,1.77,-.79,1.17,2.48,-1.04,1.35,-.98,1.07,-.82][i]});
  renderStocks();
 }
 function toggleTheme(){document.body.classList.toggle('light');if(document.body.classList.contains('light')){document.body.style.filter='invert(.93) hue-rotate(180deg)';}else{document.body.style.filter='none'}}
-loadLiveCache(); renderEGX30(); renderStocks();renderAlloc();renderGroups();renderRecommendations();updateAll();
+loadLiveCache(); renderEGX30(); renderStocks();renderAlloc();renderRecommendations();updateAll();renderMarketStatus();startAutoRefresh();
 </script>
 </body>
 </html>
