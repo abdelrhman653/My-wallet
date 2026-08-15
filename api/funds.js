@@ -1,77 +1,135 @@
 // Vercel Serverless Function: /api/funds
-// Daily NAV tracker for the three selected mutual funds.
-// Source: SNDUK public fund pages. The three funds are displayed with the user's codes:
-// ABR = Bareeq, BMM = Beltone Meya Meya, BSB = Beltone Sabayek.
+// Real mutual-fund NAV/last announced unit prices.
+// Source: SNDUK's mutual-fund price table. These are NOT EGX stock quotes.
+// ABR = Bareeq Fixed Income, BMM = Beltone Meya Meya, BSB = Beltone Sabayek.
 
-const SOURCES = {
-  ABR: { url: 'https://snduk.com/eg/funds/categories/fixed-income-funds?lang=en', needle: 'Bareeq Fixed Income Fund' },
-  BMM: { url: 'https://snduk.com/eg/funds/beltone-meya-100?lang=en', needle: 'Beltone Meya Meya (100/100) EGX100 Index Equity Fund' },
-  BSB: { url: 'https://snduk.com/eg/funds/sabayek-fund-beltone-gold/history?lang=en', needle: 'Beltone Sabayek Gold Fund' }
+const SOURCE_URL = 'https://snduk.com/eg/page/mutual-funds-prices-today?lang=en';
+
+const FUNDS = {
+  ABR: 'Bareeq Fixed Income Fund',
+  BMM: 'Beltone Meya Meya (100/100) EGX100 Index Equity Fund',
+  BSB: 'Beltone Sabayek Gold Fund'
 };
 
-function cleanNumber(v) {
-  if (!v) return null;
-  const s = String(v).replace(/,/g, '').replace(/٬/g, '').replace(/٫/g, '.').replace(/\s/g, '');
-  const n = Number(s);
-  return Number.isFinite(n) ? n : null;
+function decodeHtml(s) {
+  return String(s)
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/&#x27;/gi, "'")
+    .replace(/&#x2F;/gi, '/')
+    .replace(/&#160;/gi, ' ');
 }
 
 function htmlToText(html) {
-  return String(html)
+  return decodeHtml(String(html)
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
+    .replace(/<[^>]+>/g, ' '))
     .replace(/\s+/g, ' ')
     .trim();
 }
 
-function extract(html, code, needle) {
-  const text = htmlToText(html);
-  const codePos = text.toUpperCase().indexOf(String(needle || code).toUpperCase());
-  const area = codePos >= 0 ? text.slice(Math.max(0, codePos - 700), Math.min(text.length, codePos + 700)) : text;
+function cleanNumber(v) {
+  if (v == null) return null;
+  const s = String(v)
+    .replace(/,/g, '')
+    .replace(/٬/g, '')
+    .replace(/٫/g, '.')
+    .replace(/[\u200E\u200F\u202A-\u202E]/g, '')
+    .replace(/\s/g, '');
+  const n = Number(s);
+  return Number.isFinite(n) ? n : null;
+}
 
-  // Prefer a value directly followed by EGP/ج.م. and a NAV/Latest Price label.
-  const patterns = [
-    /(?:Latest Price|Nav Price|Unit price|آخر سعر|سعر الوثيقة|Document Price)[^0-9]{0,80}([0-9]+(?:[.,][0-9]+)?)/i,
-    /([0-9]+(?:[.,][0-9]+)?)\s*(?:EGP|ج\.م\.|جنيه)/i
+function normalizeDate(v) {
+  if (!v) return null;
+  const s = String(v).trim();
+  const m = s.match(/(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{2,4})/);
+  if (m) {
+    let y = Number(m[3]);
+    if (y < 100) y += 2000;
+    return `${y}-${String(Number(m[2])).padStart(2,'0')}-${String(Number(m[1])).padStart(2,'0')}`;
+  }
+  const m2 = s.match(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/);
+  if (m2) {
+    const months = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+    const mon = months[m2[1].slice(0,3).toLowerCase()];
+    if (mon) return `${m2[3]}-${String(mon).padStart(2,'0')}-${String(Number(m2[2])).padStart(2,'0')}`;
+  }
+  return s;
+}
+
+function extractFund(text, code, name) {
+  const pos = text.toLowerCase().indexOf(name.toLowerCase());
+  if (pos < 0) return { price:null, updated:null, code };
+  const area = text.slice(pos, pos + 650);
+
+  // SNDUK table format: fund name -> type -> date -> EGP price.
+  const datePatterns = [
+    /([A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4})/i,
+    /(\d{1,2}[\/.-]\d{1,2}[\/.-]\d{2,4})/
   ];
+  let updated = null;
+  for (const re of datePatterns) {
+    const m = area.match(re);
+    if (m) { updated = normalizeDate(m[1]); break; }
+  }
+
   let price = null;
-  for (const re of patterns) {
+  const pricePatterns = [
+    /EGP\s*([0-9]+(?:[.,][0-9]+)?)/i,
+    /([0-9]+(?:[.,][0-9]+)?)\s*EGP/i
+  ];
+  for (const re of pricePatterns) {
     const m = area.match(re);
     if (m) { price = cleanNumber(m[1]); if (price !== null) break; }
   }
 
-  // Try the page-level title/last-updated text.
-  let updated = null;
-  const dateMatch = area.match(/(?:Last Updated|Updated|آخر تحديث)[^0-9]{0,40}(\d{1,2}\/\d{1,2}\/\d{2,4})/i);
-  if (dateMatch) updated = dateMatch[1];
-
-  return { price, updated };
+  return { price, updated, code };
 }
 
 export default async function handler(req, res) {
   try {
-    const entries = await Promise.all(Object.entries(SOURCES).map(async ([code, cfg]) => {
-      const r = await fetch(cfg.url, { headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PortfolioTracker/1.0)' }, cache: 'no-store' });
-      if (!r.ok) throw new Error(`${code} source HTTP ${r.status}`);
-      const html = await r.text();
-      return [code, { ...extract(html, code, cfg.needle), source: cfg.url }];
-    }));
+    const upstream = await fetch(SOURCE_URL, {
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PortfolioTracker/1.0)' },
+      cache: 'no-store'
+    });
+    if (!upstream.ok) throw new Error(`SNDUK HTTP ${upstream.status}`);
 
-    const data = Object.fromEntries(entries);
-    const missing = Object.entries(data).filter(([,v]) => !Number.isFinite(v.price)).map(([k]) => k);
+    const html = await upstream.text();
+    const text = htmlToText(html);
+    const data = {};
+
+    for (const [code, name] of Object.entries(FUNDS)) {
+      data[code] = { ...extractFund(text, code, name), source: SOURCE_URL };
+    }
+
+    const missing = Object.entries(data)
+      .filter(([,v]) => !Number.isFinite(v.price) || !v.updated)
+      .map(([k]) => k);
+
     if (missing.length) {
-      return res.status(502).json({ success: false, error: `Could not read NAV for: ${missing.join(', ')}`, data });
+      return res.status(502).json({
+        success: false,
+        error: `Could not read fund NAV/date for: ${missing.join(', ')}`,
+        data
+      });
     }
 
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.setHeader('Cache-Control', 'no-store, max-age=0');
-    return res.status(200).json({ success: true, fetchedAt: new Date().toISOString(), data });
+    return res.status(200).json({
+      success: true,
+      fetchedAt: new Date().toISOString(),
+      source: SOURCE_URL,
+      data
+    });
   } catch (error) {
-    return res.status(500).json({ success: false, error: error?.message || 'Funds proxy error' });
+    return res.status(500).json({
+      success: false,
+      error: error?.message || 'Funds proxy error'
+    });
   }
 }
