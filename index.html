@@ -28,7 +28,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
   <div class="brand"><h1>📈 خطة محفظتي — 12 سهم</h1><p>لوحة متابعة وشراء وسحب للمحفظة طويلة الأجل</p></div>
   <div class="top-actions">
     <button class="pill" onclick="toggleTheme()">☾ الوضع الداكن</button>
-    <button class="pill" onclick="openApi()">🔗 ربط الأسعار الحقيقية</button>
+    <button class="pill" onclick="openApi()">🔄 تحديث الأسعار الحقيقية</button>
     <button class="pill" onclick="showHelp()">؟ مساعدة</button>
   </div>
 </header>
@@ -89,7 +89,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
   <section class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h2>📊 أداء الأسهم اليومي</h2><button class="btn" onclick="resetDemo()">↻ إعادة بيانات العرض</button></div>
     <div class="stock-grid" id="stocks"></div>
-    <div class="footer"><span id="dataStatus">الأسعار الحالية تجريبية.</span> <button class="btn" style="padding:6px 9px;margin-top:6px" onclick="refreshLive()">↻ تحديث الأسعار الآن</button></div>
+    <div class="footer"><span id="dataStatus">الأسعار الحقيقية من Oanor EGX API.</span> <button class="btn" style="padding:6px 9px;margin-top:6px" onclick="refreshLive()">↻ تحديث الأسعار الآن</button></div>
   </section>
 
   <section class="card">
@@ -127,9 +127,9 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
 
   <section class="card" id="apiCard">
     <h2>🔗 اتصال بيانات السوق</h2>
-    <div class="note">اربط الموقع بمصدر أسعار EGX. بعد إدخال مفتاح API سيجلب الموقع السعر والتغير تلقائيًا، ثم يستخدم البيانات في لوحة المتابعة. لا تضع مفتاحك في موقع عام.</div>
-    <div style="margin-top:10px" class="field"><input id="apiKeyInline" type="password" placeholder="مفتاح API (اختياري)" autocomplete="off"><button class="btn primary" onclick="saveApiKey();refreshLive()">حفظ وتحديث</button></div>
-    <div class="small muted" style="margin-top:8px">المصدر: Oanor EGX API — يمكن استخدام الخطة المجانية ضمن حدودها.</div>
+    <div class="note">الأسعار الحقيقية يتم جلبها الآن من خلال خادم الموقع على Vercel. مفتاح Oanor محفوظ في إعدادات Vercel ولا يظهر في المتصفح.</div>
+    <div style="margin-top:10px"><button class="btn primary" onclick="refreshLive()">↻ تحديث الأسعار الحقيقية</button></div>
+    <div class="small muted" style="margin-top:8px">المصدر: Oanor EGX API — المفتاح لا يُحفظ داخل الموقع.</div>
   </section>
 
   <section class="card">
@@ -148,15 +148,13 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
 
 <div id="apiModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:9999;padding:20px;align-items:center;justify-content:center">
   <div class="card" style="width:min(520px,100%);max-height:90vh;overflow:auto">
-    <div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">🔗 ربط الأسعار الحقيقية</h2><button class="btn" onclick="closeApi()">✕</button></div>
-    <p class="muted small" style="line-height:1.8">الموقع يعمل كملف HTML محلي، لذلك لا يمكنني وضع مفتاحك بداخله من عندي. أدخل مفتاحك هنا وسيحفظه هذا الجهاز فقط. لو لم يكن عندك مفتاح، أنشئ حسابًا لدى مزود البيانات ثم الصقه هنا.</p>
-    <label>مفتاح Oanor API</label>
-    <div class="field"><input id="apiKey" type="password" placeholder="oanor_..." autocomplete="off"></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
-      <button class="btn primary" onclick="saveApiKey();refreshLive();closeApi()">حفظ + تحديث الأسعار</button>
-      <button class="btn danger" onclick="clearApiKey()">مسح المفتاح</button>
+    <div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">🔄 تحديث الأسعار الحقيقية</h2><button class="btn" onclick="closeApi()">✕</button></div>
+    <p class="muted small" style="line-height:1.8;margin-top:12px">تم تجهيز النسخة الآمنة لـVercel. لا تضع مفتاح Oanor داخل الموقع أو المتصفح.</p>
+    <div class="advice-card advice-good" style="margin-top:12px"><div class="title">🔄 الأسعار الحقيقية</div><div>هذا الإصدار متصل مباشرة بـOanor ويجلب بيانات EGX عند الضغط على تحديث الأسعار.</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
+      <button class="btn primary" onclick="closeApi();refreshLive()">اختبار + تحديث</button>
+      <button class="btn" onclick="closeApi()">حسنًا</button>
     </div>
-    <div class="note" style="margin-top:12px">مهم: المفتاح سيبقى في LocalStorage لهذا المتصفح. لا ترفع الملف إلى موقع عام بالمفتاح بداخله.</div>
   </div>
 </div>
 
@@ -283,63 +281,55 @@ function renderAdvice(){
  document.getElementById('adviceGrid').innerHTML=cards+sell+`<div class="advice-card advice-neutral"><div class="title">📌 قاعدة ذكية</div><div>السهم الهابط ليس بالضرورة فرصة، والسهم الصاعد ليس بالضرورة غاليًا. الموقع يستخدم الحركة اليومية كإشارة مساعدة فقط.</div></div>`;
 }
 
-const API_BASE='https://api.oanor.com/egx-api';
-let apiKey=localStorage.getItem('egx_api_key')||'';
-function openApi(){document.getElementById('apiModal').style.display='flex';document.getElementById('apiKey').value=apiKey;}
+const OANOR_KEY='oanor_live_f16f9a4684b5159676729a977158f9cdf95e9e9d886e3ad6363f826e9dfab87f';
+const API_BASE='https://api.oanor.com/egx-api/v1/quote';
+function openApi(){document.getElementById('apiModal').style.display='flex';}
 function closeApi(){document.getElementById('apiModal').style.display='none';}
-function showHelp(){alert('ربط الأسعار: اضغط 🔗 ربط الأسعار الحقيقية، ضع مفتاح Oanor API ثم اضغط حفظ وتحديث. بعدها سيجلب الموقع السعر والتغير لكل الأسهم. بدون مفتاح تظل البيانات اليدوية متاحة.');}
-function saveApiKey(){
- const a=document.getElementById('apiKey')?.value?.trim() || document.getElementById('apiKeyInline')?.value?.trim() || '';
- if(!a){alert('اكتب مفتاح API أولًا.');return false;}
- apiKey=a;localStorage.setItem('egx_api_key',apiKey);
- const inline=document.getElementById('apiKeyInline'); if(inline) inline.value=apiKey;
- return true;
-}
-function clearApiKey(){apiKey='';localStorage.removeItem('egx_api_key');document.getElementById('apiKey').value='';const i=document.getElementById('apiKeyInline');if(i)i.value='';document.getElementById('dataStatus').textContent='تم مسح مفتاح API؛ البيانات اليدوية متاحة.';}
-function dig(o, keys){
- let x=o;
- for(const k of keys){ if(x==null)return undefined; x=x[k]; }
- return x;
-}
+function showHelp(){alert('الربط الآمن: مفتاح Oanor لا يوضع في الموقع. ضعه في Vercel باسم OANOR_API_KEY ثم أعد النشر، وبعدها اضغط تحديث الأسعار.');}
+function saveApiKey(){alert('لا تضع مفتاح Oanor داخل المتصفح. المفتاح يجب أن يكون في Vercel Environment Variables باسم OANOR_API_KEY.');return false;}
+function clearApiKey(){alert('المفتاح محفوظ في Vercel، وليس داخل هذا المتصفح. لحذفه أو تغييره استخدم Vercel → Settings → Environment Variables.');}
 function normalizeQuote(raw, ticker){
  const candidates=[raw,raw?.data,raw?.quote,raw?.data?.quote,raw?.result,raw?.data?.result].filter(Boolean);
  for(const o of candidates){
-   const price=Number(o.price ?? o.last ?? o.last_price ?? o.current_price ?? o.close ?? o.regularMarketPrice ?? o.marketPrice);
-   const change=Number(o.change_percent ?? o.changePercent ?? o.percent_change ?? o.pct_change ?? o.changePct ?? o.regularMarketChangePercent);
+   const price=Number(o.price ?? o.last ?? o.last_price ?? o.current_price ?? o.close ?? o.regularMarketPrice ?? o.marketPrice ?? o.value);
+   const change=Number(o.change_percent ?? o.changePercent ?? o.percent_change ?? o.pct_change ?? o.changePct ?? o.regularMarketChangePercent ?? o.change_percentage);
    if(Number.isFinite(price)) return {price,change:Number.isFinite(change)?change:0,ticker};
  }
- // Yahoo-like nested result
  const r=raw?.chart?.result?.[0];
  if(r){const m=r.meta||{};const price=Number(m.regularMarketPrice);let prev=Number(m.previousClose);let change=prev?((price-prev)/prev*100):0;if(Number.isFinite(price))return{price,change,ticker};}
  return null;
 }
-async function fetchQuote(ticker){
- if(!apiKey) throw new Error('NO_KEY');
- const qs=[`?symbol=${encodeURIComponent(ticker)}`,`?ticker=${encodeURIComponent(ticker)}`];
- let lastErr=null;
- for(const q of qs){
-   try{
-     const r=await fetch(API_BASE+'/v1/quote'+q,{headers:{'x-oanor-key':apiKey,'Accept':'application/json'}});
-     if(!r.ok){lastErr=new Error('HTTP '+r.status);continue;}
-     const raw=await r.json(); const qn=normalizeQuote(raw,ticker); if(qn)return qn;
-     lastErr=new Error('صيغة بيانات غير معروفة');
-   }catch(e){lastErr=e;}
- }
- throw lastErr||new Error('فشل الطلب');
+async function fetchQuotes(){
+ const symbols=stocks.map(s=>s.t).join(',');
+ const r=await fetch(API_BASE+'?symbol='+encodeURIComponent(symbols),{headers:{'Accept':'application/json','x-oanor-key':OANOR_KEY},cache:'no-store'});
+ let raw={};
+ try{raw=await r.json();}catch(e){}
+ if(!r.ok) throw new Error(raw?.error||('HTTP '+r.status));
+ return raw;
 }
 async function refreshLive(){
- if(!apiKey){openApi();return;}
  const status=document.getElementById('dataStatus');
- status.textContent='جاري تحديث الأسعار الحقيقية…';
- let ok=0, fail=0;
- for(const s of stocks){
-   try{const q=await fetchQuote(s.t);s.p=q.price;s.c=q.change;ok++;renderStocks();}
-   catch(e){fail++;}
+ status.textContent='جاري تحديث الأسعار الحقيقية من خلال Vercel…';
+ try{
+   const raw=await fetchQuotes();
+   const list=Array.isArray(raw?.quotes)?raw.quotes:(Array.isArray(raw?.data)?raw.data:(Array.isArray(raw)?raw:Object.values(raw?.quotes||{})));
+   let ok=0;
+   for(const s of stocks){
+     let q=null;
+     const exact=list.find(x=>(x?.ticker||x?.symbol||x?.code||x?.name||'').toString().toUpperCase()===s.t.toUpperCase());
+     if(exact) q=normalizeQuote(exact,s.t);
+     if(!q && raw?.quotes && raw.quotes[s.t]) q=normalizeQuote(raw.quotes[s.t],s.t);
+     if(q){s.p=q.price;s.c=q.change;ok++;}
+   }
+   localStorage.setItem('stocks_live_cache',JSON.stringify(stocks.map(s=>({t:s.t,p:s.p,c:s.c}))));
+   renderStocks();renderRecommendations();renderGroups();updateAll();renderAdvice();
+   const source=raw?.source?' — '+raw.source:'';
+   status.textContent=ok?`تم تحديث ${ok} من ${stocks.length} سهم${source} — ${new Date().toLocaleTimeString('ar-EG')}`:'وصل رد من الخادم لكن لم يتم التعرف على بيانات الأسهم.';
+   if(!ok) alert('الخادم اشتغل، لكن صيغة بيانات Oanor لم تتوافق مع الحقول الحالية. ابعتلي نتيجة /api/egx أو صورة الخطأ لأظبط parser.');
+ }catch(e){
+   status.textContent='تعذر تحديث الأسعار الحقيقية: '+(e.message||'خطأ غير معروف');
+   alert('تعذر تحديث الأسعار من Oanor. تأكد من الاتصال بالإنترنت وأن مفتاح Oanor ما زال صالحًا.\n\n'+(e.message||''));
  }
- localStorage.setItem('stocks_live_cache',JSON.stringify(stocks.map(s=>({t:s.t,p:s.p,c:s.c}))));
- renderRecommendations();renderGroups();updateAll();renderAdvice();
- status.textContent=ok?`تم تحديث ${ok} سهم${fail?' — تعذر تحديث '+fail:''} آخر تحديث: ${new Date().toLocaleTimeString('ar-EG')}`:'تعذر جلب البيانات. تأكد من مفتاح API والاتصال بالإنترنت.';
- if(!ok)alert('لم يتم جلب الأسعار. تأكد من مفتاح Oanor API وأن المتصفح يسمح بالاتصال بالـAPI.');
 }
 function loadLiveCache(){
  try{const c=JSON.parse(localStorage.getItem('stocks_live_cache')||'[]');c.forEach(x=>{const s=stocks.find(a=>a.t===x.t);if(s&&Number.isFinite(+x.p)){s.p=+x.p;s.c=+x.c||0;}})}catch(e){}
@@ -350,7 +340,7 @@ function resetDemo(){
  renderStocks();renderAdvice();
 }
 function toggleTheme(){document.body.classList.toggle('light');if(document.body.classList.contains('light')){document.body.style.filter='invert(.93) hue-rotate(180deg)';}else{document.body.style.filter='none'}}
-loadLiveCache(); if(apiKey){document.getElementById('apiKeyInline').value=apiKey;} renderStocks();renderAlloc();renderGroups();renderRecommendations();renderAdvice();updateAll();
+loadLiveCache(); renderStocks();renderAlloc();renderGroups();renderRecommendations();renderAdvice();updateAll();
 </script>
 </body>
 </html>
