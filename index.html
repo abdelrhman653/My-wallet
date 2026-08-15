@@ -12,14 +12,14 @@ header{display:flex;justify-content:space-between;align-items:center;gap:12px;ma
 label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{display:flex;gap:8px;align-items:center}.field input,.field select{width:100%;background:#081321;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px;outline:none}.field input:focus,.field select:focus{border-color:var(--blue)}
 .range{width:100%}.withdraw-box{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.mini{background:#091523;border:1px solid var(--line);padding:11px;border-radius:12px}.mini strong{display:block;font-size:18px;margin-top:4px}
 .stock-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stock{padding:13px;border-radius:14px;border:1px solid var(--line);background:#0a1625}.stock.up{box-shadow:inset 0 0 0 1px rgba(77,223,114,.22)}.stock.down{box-shadow:inset 0 0 0 1px rgba(255,101,116,.18)}.stock .row{display:flex;justify-content:space-between;gap:8px}.ticker{font-weight:800;font-size:16px}.price{font-size:19px;font-weight:800;margin:10px 0 4px}.change{font-size:12px;font-weight:700}.stock input{margin-top:9px;padding:7px;width:100%;background:#07111e;border:1px solid var(--line);border-radius:8px;color:#fff}
-.reco{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.reco .item{background:#0a1826;border:1px solid #2d5537;border-radius:14px;padding:13px}.rank{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#1d6b30;font-weight:800}.amount{font-size:20px;font-weight:800;margin-top:7px}
+.reco{display:grid;grid-template-columns:repeat(4,minmax(145px,1fr));gap:10px;overflow-x:auto;padding-bottom:2px}.reco .item{min-width:145px}.reco .item{background:#0a1826;border:1px solid #2d5537;border-radius:14px;padding:13px}.rank{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#1d6b30;font-weight:800}.amount{font-size:20px;font-weight:800;margin-top:7px}
 .groups{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.group{border:1px solid var(--line);border-radius:14px;padding:14px;background:#0a1725}.group h3{margin:0 0 8px}.group ul{margin:0;padding:0 18px 0 0}.group li{margin:6px 0}.group .total{margin-top:10px;padding-top:9px;border-top:1px solid var(--line);font-weight:800}
 .alloc{display:grid;gap:7px}.alloc-row{display:grid;grid-template-columns:55px 1fr 45px;gap:8px;align-items:center;font-size:12px}.bar{height:8px;background:#0a1220;border-radius:99px;overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,#2ea94f,#7ad7ff)}
 .sell{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sell-result{padding:14px;border-radius:13px;background:#0a1724;border:1px solid #38536f}.sell-result strong{font-size:22px}.note{background:#0a1522;border-right:3px solid var(--gold);padding:11px;border-radius:10px;color:#cbd6e4;font-size:12px;line-height:1.7}
 .checklist{display:grid;gap:7px}.check{display:flex;align-items:center;gap:8px;background:#091523;border:1px solid var(--line);padding:9px;border-radius:10px}.check input{accent-color:var(--green)}
 .footer{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.7}.market-status{margin-top:8px;padding:9px 11px;border-radius:10px;background:#091523;border:1px solid var(--line);font-size:12px}.btn:disabled{opacity:.5;cursor:not-allowed}
-@media(max-width:900px){.grid{grid-template-columns:1fr}.stock-grid{grid-template-columns:repeat(2,1fr)}.reco{grid-template-columns:repeat(2,1fr)}.groups{grid-template-columns:1fr}.summary{grid-template-columns:1fr 1fr}.summary .metric:last-child{grid-column:1/-1}}
-@media(max-width:520px){.wrap{padding:10px}.stock-grid{grid-template-columns:1fr 1fr;gap:7px}.stock{padding:10px}.summary{grid-template-columns:1fr}.summary .metric:last-child{grid-column:auto}.sell{grid-template-columns:1fr}.top-actions{flex-wrap:wrap}.brand h1{font-size:21px}}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.stock-grid{grid-template-columns:repeat(2,1fr)}.reco{grid-template-columns:repeat(4,minmax(145px,1fr))}.groups{grid-template-columns:1fr}.summary{grid-template-columns:1fr 1fr}.summary .metric:last-child{grid-column:1/-1}}
+@media(max-width:520px){.wrap{padding:10px}.stock-grid{grid-template-columns:1fr 1fr;gap:7px}.stock{padding:10px}.summary{grid-template-columns:1fr}.summary .metric:last-child{grid-column:auto}.sell{grid-template-columns:1fr}.top-actions{flex-wrap:wrap}.brand h1{font-size:21px}.portfolio-split{grid-template-columns:1fr 1fr!important}.portfolio-split .mini strong{font-size:16px}}
 
 /* Smart assistant */
 .smart{border:1px solid #315a78;background:linear-gradient(145deg,#0b1c2d,#0a1523)}
@@ -49,9 +49,26 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
 <div class="grid">
 <aside class="side">
   <section class="card">
-    <h2>💰 قيمة المحفظة</h2>
-    <label>القيمة الحالية</label>
-    <div class="field"><input id="portfolio" type="number" value="0" min="0" step="1000" oninput="updateAll()"><span>جنيه</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+      <h2 style="margin:0">⭐ أفضل 4 أسهم لهذا الشهر</h2>
+      <span class="smart-badge" id="topRecoStatus">يتغير حسب بيانات الأسهم ومحفظتك</span>
+    </div>
+    <div class="reco" id="topRecommendations" style="margin-top:10px"></div>
+    <div class="note" style="margin-top:10px">الاختيار ليس ثابتًا: يتم ترتيب الـ12 سهمًا كل شهر حسب حركة السهم، الوزن الحالي في محفظتك، وهل تملكه بالفعل، مع السماح بعودة السهم إذا ظهرت فيه فرصة قوية جدًا.</div>
+  </section>
+
+  <section class="card">
+    <h2>💰 قيمة المحفظة والاستثمار</h2>
+    <div class="portfolio-split" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="mini">
+        <span class="muted small">قيمة المحفظة الحالية</span>
+        <div class="field" style="margin-top:5px"><input id="portfolio" type="number" value="0" min="0" step="1000" oninput="updateAll()"><span>جنيه</span></div>
+      </div>
+      <div class="mini">
+        <span class="muted small">مبلغ الاستثمار الشهري</span>
+        <div class="field" style="margin-top:5px"><input id="monthlyInvestment" type="number" value="5000" min="0" step="100" oninput="updateAll()"><span>جنيه</span></div>
+      </div>
+    </div>
     <div class="withdraw-box">
       <div class="mini"><span class="muted small">السحب السنوي</span><strong id="annual">0</strong></div>
       <div class="mini"><span class="muted small">السحب الشهري</span><strong id="monthly">0</strong></div>
@@ -65,13 +82,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
 
   <section class="card">
     <h2>🛒 شراء الشهر</h2>
-    <div class="field">
-      <select id="month" onchange="renderRecommendations()">
-        <option value="1">الشهر 1 — المجموعة 1</option>
-        <option value="2">الشهر 2 — المجموعة 2</option>
-        <option value="3">الشهر 3 — المجموعة 3</option>
-      </select>
-    </div>
+    <div class="market-status" id="purchasePlanStatus">جاري حساب خطة الشراء…</div>
     <div style="margin-top:10px" class="checklist" id="checks"></div>
     <button class="btn primary" style="width:100%;margin-top:10px" onclick="savePurchases()">✓ حفظ ما تم شراؤه</button>
   </section>
@@ -111,9 +122,9 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
   </section>
 
   <section class="card">
-    <h2>⭐ التوصية الشهرية — الأسهم الأربعة لهذا الشهر</h2>
+    <h2>⭐ تفاصيل التوصية الشهرية</h2>
     <div class="reco" id="recommendations"></div>
-    <div class="note" style="margin-top:10px">الـ5,000 جنيه الشهرية تُوزع داخل المجموعة حسب الأوزان المستهدفة، وليس بالتساوي بين الأسهم.</div>
+    <div class="note" style="margin-top:10px">المبلغ الشهري قابل للتعديل من قسم «قيمة المحفظة والاستثمار»، وسيعاد توزيع المبلغ تلقائيًا على أفضل 4 أسهم حسب قوة الفرصة. لا توجد مجموعات ثابتة.</div>
   </section>
 
   <section class="card smart" id="smartBox">
@@ -187,14 +198,18 @@ const stocks=[
  {t:'MFPC',w:1,p:85.10,c:1.07,g:3},
  {t:'HRHO',w:1,p:24.30,c:-0.82,g:4},
 ];
-const groups={1:['COMI','TMGH','SWDY','FWRY'],2:['ADIB','ABUK','ETEL','ALCN'],3:['ORHD','TALM','MFPC','HRHO']};
-const groupWeights={1:66,2:27,3:7};
+const groups={};
+const groupWeights={};
+let currentRecommendations=[];
 let saved=JSON.parse(localStorage.getItem('purchases12')||'{}');
 let positions=JSON.parse(localStorage.getItem('positions12_v2')||'{}');
+const savedMonthlyInvestment=Number(localStorage.getItem('monthlyInvestment12')||5000);
 
 function money(n){return new Intl.NumberFormat('ar-EG',{maximumFractionDigits:0}).format(Math.round(n))+' جنيه'}
 function updateAll(){
  const pv=Math.max(0,+document.getElementById('portfolio').value||0), rate=+document.getElementById('rate').value||0;
+ const mi=Math.max(0,+document.getElementById('monthlyInvestment').value||0);
+ localStorage.setItem('monthlyInvestment12',String(mi));
  const invested=Object.values(positions).reduce((a,v)=>a+(Number(v)||0),0);
  const profit=pv-invested, pct=invested?profit/invested*100:0;
  document.getElementById('rateText').textContent=rate+'%';
@@ -230,34 +245,78 @@ function buyScore(s,pv){
  // Momentum helps rank the four planned names, while underweight gets more importance.
  return under*4 + momentum;
 }
-function renderRecommendations(){
- const m=+document.getElementById('month').value;
- const arr=groups[m], total=groupWeights[m], pv=+document.getElementById('portfolio').value||0;
- const ranked=arr.map(t=>stocks.find(x=>x.t===t)).sort((a,b)=>buyScore(b,pv)-buyScore(a,pv));
- document.getElementById('recommendations').innerHTML=ranked.map((s,i)=>{
-   const amt=5000*s.w/total, actual=getActualWeight(s,pv), gap=s.w-actual;
-   const label=gap>0.25?'أقل من وزنه':gap<-0.25?'أعلى من وزنه':'قريب من الوزن';
-   return `<div class="item"><span class="rank">${i+1}</span><div style="font-weight:800;margin-top:7px">${s.t}</div><div class="muted small">هدف ${s.w}% · فعلي ${actual.toFixed(2)}%</div><div class="amount">${money(amt)}</div><div class="small ${s.c>=0?'green':'red'}">${s.c>=0?'↑':'↓'} ${s.c>0?'+':''}${s.c.toFixed(2)}% اليوم</div><div class="small muted">${label}</div></div>`;
- }).join('');
- document.getElementById('checks').innerHTML=arr.map(t=>`<label class="check"><input type="checkbox" ${saved[`${m}-${t}`]?'checked':''} onchange="togglePurchase('${m}','${t}',this.checked)"> تم شراء ${t}</label>`).join('');
- renderSmartBuy(m,ranked);
+function getMonthlyInvestment(){
+ return Math.max(0,+document.getElementById('monthlyInvestment').value||0);
 }
-function renderSmartBuy(m,ranked){
+function isOwned(t){ return Number(positions[t]||0)>0; }
+function recommendationScore(s,pv){
+ const actual=getActualWeight(s,pv);
+ const under=Math.max(-5, Math.min(20, s.w-actual));
+ const momentum=Math.max(-8, Math.min(8, Number(s.c)||0));
+ const owned=isOwned(s);
+ // الملكية لا تمنع الاختيار؛ السهم المملوك يظل مرشحًا إذا كانت فرصته قوية.
+ let score=50 + under*3.2 + momentum*2.4;
+ if(!owned) score += 3;
+ // فرصة استثنائية: حركة قوية مع كون السهم أقل من وزنه.
+ if(momentum>=4 && under>0) score += 12;
+ if(momentum>=6 && under>=1) score += 8;
+ return Math.max(0,Math.min(100,score));
+}
+function buildRecommendations(){
+ const pv=+document.getElementById('portfolio').value||0;
+ return [...stocks]
+   .map(s=>({...s,score:recommendationScore(s,pv),owned:isOwned(s),actual:getActualWeight(s,pv)}))
+   .sort((a,b)=>b.score-a.score)
+   .slice(0,4);
+}
+function allocationForRecommendations(ranked,total){
+ if(!ranked.length || total<=0) return [];
+ const base=ranked.map(s=>Math.max(10,s.score));
+ const sum=base.reduce((a,b)=>a+b,0);
+ return ranked.map((s,i)=>total*base[i]/sum);
+}
+function recommendationCard(s,i,amount){
+ const gap=s.w-s.actual;
+ const label=gap>0.25?'أقل من وزنه':gap<-0.25?'أعلى من وزنه':'قريب من الوزن';
+ const exceptional=s.score>=88?'🔥 فرصة قوية جدًا':s.score>=78?'⭐ فرصة قوية':'مرشح جيد';
+ return `<div class="item"><span class="rank">${i+1}</span><div style="font-weight:800;margin-top:7px">${s.t}</div><div class="muted small">${exceptional}</div><div class="amount">${money(amount)}</div><div class="small ${s.c>=0?'green':'red'}">${s.c>=0?'↑':'↓'} ${s.c>0?'+':''}${s.c.toFixed(2)}% اليوم</div><div class="small muted">${s.owned?'موجود في محفظتك':'غير موجود في محفظتك'} · ${label}</div><div class="small muted">تقييم ${s.score.toFixed(0)}/100</div></div>`;
+}
+function renderRecommendations(){
+ const total=getMonthlyInvestment();
+ const ranked=buildRecommendations();
+ currentRecommendations=ranked;
+ const amounts=allocationForRecommendations(ranked,total);
+ const html=ranked.map((s,i)=>recommendationCard(s,i,amounts[i])).join('');
+ const top=document.getElementById('topRecommendations');
+ if(top) top.innerHTML=html || '<div class="muted small">أدخل مبلغ الاستثمار لعرض التوصيات.</div>';
+ const rec=document.getElementById('recommendations');
+ if(rec) rec.innerHTML=html || '<div class="muted small">لا توجد توصيات حاليًا.</div>';
+ const checks=document.getElementById('checks');
+ if(checks){
+   const monthKey=new Date().toISOString().slice(0,7);
+   checks.innerHTML=ranked.map(s=>`<label class="check"><input type="checkbox" ${saved[`${monthKey}-${s.t}`]?'checked':''} onchange="togglePurchase('${monthKey}','${s.t}',this.checked)"> تم شراء ${s.t} — ${money(amounts[ranked.indexOf(s)]||0)}</label>`).join('');
+ }
+ const status=document.getElementById('purchasePlanStatus');
+ if(status) status.innerHTML=ranked.length?`خطة هذا الشهر: <b>${money(total)}</b> موزعة على أفضل 4 أسهم من أصل 12، حسب التقييم الحالي.`:'أدخل مبلغ الاستثمار الشهري أولًا.';
+ renderSmartBuy(null,ranked,amounts);
+}
+function renderSmartBuy(m,ranked,amounts){
  const box=document.getElementById('smartBuys');
- const pv=+document.getElementById('portfolio').value||0, total=groupWeights[m];
+ const pv=+document.getElementById('portfolio').value||0;
  box.innerHTML=ranked.map((s,i)=>{
-   const amt=5000*s.w/total, actual=getActualWeight(s,pv), gap=s.w-actual;
-   const score=Math.max(0,Math.min(100,50+buyScore(s,pv)*3));
-   return `<div class="signal"><div><b>${i+1}. ${s.t}</b><div class="small muted">${s.c>=0?'صاعد':'هابط'} ${s.c>0?'+':''}${s.c.toFixed(2)}% · هدف ${s.w}% · فعلي ${actual.toFixed(2)}%</div><div class="buy-meter"><span style="width:${score}%"></span></div></div><div class="tag">${money(amt)}</div></div>`;
+   const score=s.score||recommendationScore(s,pv);
+   return `<div class="signal"><div><b>${i+1}. ${s.t}</b><div class="small muted">${s.owned?'موجود بالمحفظة':'غير مملوك'} · ${s.c>=0?'صاعد':'هابط'} ${s.c>0?'+':''}${s.c.toFixed(2)}% · تقييم ${score.toFixed(0)}/100</div><div class="buy-meter"><span style="width:${score}%"></span></div></div><div class="tag">${money(amounts[i]||0)}</div></div>`;
  }).join('');
  const top=ranked[0];
  const sig=document.getElementById('smartSignal');
  if(top){
-   const actual=getActualWeight(top,pv), gap=top.w-actual;
-   sig.innerHTML=`<b>${top.t}</b> هو الأول داخل مجموعة هذا الشهر حسب الوزن الفعلي + حركة اليوم.<br><br><span class="${top.c>=0?'green':'red'}">حركة اليوم: ${top.c>0?'+':''}${top.c.toFixed(2)}%</span><br>الفجوة عن الوزن المستهدف: <b>${gap>=0?'+':''}${gap.toFixed(2)} نقطة مئوية</b>`;
+   const gap=top.w-top.actual;
+   sig.innerHTML=`<b>${top.t}</b> هو أقوى ترشيح حاليًا بدرجة <b>${top.score.toFixed(0)}/100</b>.<br><br><span class="${top.c>=0?'green':'red'}">حركة اليوم: ${top.c>0?'+':''}${top.c.toFixed(2)}%</span><br>الفجوة عن الوزن المستهدف: <b>${gap>=0?'+':''}${gap.toFixed(2)} نقطة مئوية</b><br><span class="small muted">${top.owned?'موجود في محفظتك، لكن ملكيته لا تمنع اختياره مرة أخرى إذا كانت الفرصة قوية.':'غير موجود في محفظتك حاليًا.'}</span>`;
  }
  const st=document.getElementById('smartStatus');
  st.textContent=liveConnected?'بيانات سوق متصلة':'بيانات يدوية / آخر تحديث محفوظ';
+ const ts=document.getElementById('topRecoStatus');
+ if(ts) ts.textContent=ranked.length?'تقييم متغير من الـ12 سهمًا':'في انتظار البيانات';
 }
 
 function togglePurchase(m,t,v){saved[`${m}-${t}`]=v;localStorage.setItem('purchases12',JSON.stringify(saved))}
@@ -265,12 +324,7 @@ function savePurchases(){localStorage.setItem('purchases12',JSON.stringify(saved
 function renderAlloc(){
  document.getElementById('alloc').innerHTML=stocks.map(s=>`<div class="alloc-row"><b>${s.t}</b><div class="bar"><span style="width:${s.w*4.5}%"></span></div><span>${s.w}%</span></div>`).join('');
 }
-function renderGroups(){
- document.getElementById('groups').innerHTML=[1,2,3].map(m=>{
-  const total=groupWeights[m], arr=groups[m];
-  return `<div class="group"><h3>المجموعة ${m} — الشهر ${m}</h3><ul>${arr.map(t=>{const s=stocks.find(x=>x.t===t);return `<li><b>${t}</b> — ${money(5000*s.w/total)}</li>`}).join('')}</ul><div class="total">إجمالي الشهر: 5,000 جنيه</div></div>`;
- }).join('');
-}
+function renderGroups(){ /* لم تعد هناك مجموعات ثابتة؛ التوصيات ديناميكية. */ }
 function renderPositions(){
  const pv=+document.getElementById('portfolio').value||0;
  const tb=document.getElementById('positions');
