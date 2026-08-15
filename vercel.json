@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/egx.js": {
+      "maxDuration": 60
+    }
+  }
+}

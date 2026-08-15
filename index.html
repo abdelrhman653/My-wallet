@@ -28,7 +28,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
   <div class="brand"><h1>📈 خطة محفظتي — 12 سهم</h1><p>لوحة متابعة وشراء وسحب للمحفظة طويلة الأجل</p></div>
   <div class="top-actions">
     <button class="pill" onclick="toggleTheme()">☾ الوضع الداكن</button>
-    <button class="pill" onclick="openApi()">🔄 تحديث الأسعار الحقيقية</button>
+    <button class="pill" onclick="openApi()">🔗 ربط الأسعار الحقيقية</button>
     <button class="pill" onclick="showHelp()">؟ مساعدة</button>
   </div>
 </header>
@@ -89,7 +89,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
   <section class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h2>📊 أداء الأسهم اليومي</h2><button class="btn" onclick="resetDemo()">↻ إعادة بيانات العرض</button></div>
     <div class="stock-grid" id="stocks"></div>
-    <div class="footer"><span id="dataStatus">الأسعار الحقيقية من Oanor EGX API.</span> <button class="btn" style="padding:6px 9px;margin-top:6px" onclick="refreshLive()">↻ تحديث الأسعار الآن</button></div>
+    <div class="footer"><span id="dataStatus">الأسعار الحالية تجريبية حتى يتم نشر نسخة Vercel وربط OANOR_API_KEY.</span> <button class="btn" style="padding:6px 9px;margin-top:6px" onclick="refreshLive()">↻ تحديث الأسعار الآن</button></div>
   </section>
 
   <section class="card">
@@ -148,9 +148,9 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
 
 <div id="apiModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:9999;padding:20px;align-items:center;justify-content:center">
   <div class="card" style="width:min(520px,100%);max-height:90vh;overflow:auto">
-    <div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">🔄 تحديث الأسعار الحقيقية</h2><button class="btn" onclick="closeApi()">✕</button></div>
+    <div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">🔗 ربط الأسعار الحقيقية</h2><button class="btn" onclick="closeApi()">✕</button></div>
     <p class="muted small" style="line-height:1.8;margin-top:12px">تم تجهيز النسخة الآمنة لـVercel. لا تضع مفتاح Oanor داخل الموقع أو المتصفح.</p>
-    <div class="advice-card advice-good" style="margin-top:12px"><div class="title">🔄 الأسعار الحقيقية</div><div>هذا الإصدار متصل مباشرة بـOanor ويجلب بيانات EGX عند الضغط على تحديث الأسعار.</div></div>
+    <div class="advice-card advice-good" style="margin-top:12px"><div class="title">🔐 المفتاح في الخادم</div><div>في Vercel أضف متغيرًا باسم <strong>OANOR_API_KEY</strong> وضع فيه مفتاحك، ثم اعمل Redeploy. بعد ذلك الموقع يتصل بـOanor من خلال <strong>/api/egx</strong> بدون كشف المفتاح للمتصفح.</div></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
       <button class="btn primary" onclick="closeApi();refreshLive()">اختبار + تحديث</button>
       <button class="btn" onclick="closeApi()">حسنًا</button>
@@ -281,8 +281,7 @@ function renderAdvice(){
  document.getElementById('adviceGrid').innerHTML=cards+sell+`<div class="advice-card advice-neutral"><div class="title">📌 قاعدة ذكية</div><div>السهم الهابط ليس بالضرورة فرصة، والسهم الصاعد ليس بالضرورة غاليًا. الموقع يستخدم الحركة اليومية كإشارة مساعدة فقط.</div></div>`;
 }
 
-const OANOR_KEY='oanor_live_f16f9a4684b5159676729a977158f9cdf95e9e9d886e3ad6363f826e9dfab87f';
-const API_BASE='https://api.oanor.com/egx-api/v1/quote';
+const API_BASE='/api/egx';
 function openApi(){document.getElementById('apiModal').style.display='flex';}
 function closeApi(){document.getElementById('apiModal').style.display='none';}
 function showHelp(){alert('الربط الآمن: مفتاح Oanor لا يوضع في الموقع. ضعه في Vercel باسم OANOR_API_KEY ثم أعد النشر، وبعدها اضغط تحديث الأسعار.');}
@@ -301,7 +300,7 @@ function normalizeQuote(raw, ticker){
 }
 async function fetchQuotes(){
  const symbols=stocks.map(s=>s.t).join(',');
- const r=await fetch(API_BASE+'?symbol='+encodeURIComponent(symbols),{headers:{'Accept':'application/json','x-oanor-key':OANOR_KEY},cache:'no-store'});
+ const r=await fetch(API_BASE+'?symbols='+encodeURIComponent(symbols),{headers:{'Accept':'application/json'},cache:'no-store'});
  let raw={};
  try{raw=await r.json();}catch(e){}
  if(!r.ok) throw new Error(raw?.error||('HTTP '+r.status));
@@ -328,7 +327,7 @@ async function refreshLive(){
    if(!ok) alert('الخادم اشتغل، لكن صيغة بيانات Oanor لم تتوافق مع الحقول الحالية. ابعتلي نتيجة /api/egx أو صورة الخطأ لأظبط parser.');
  }catch(e){
    status.textContent='تعذر تحديث الأسعار الحقيقية: '+(e.message||'خطأ غير معروف');
-   alert('تعذر تحديث الأسعار من Oanor. تأكد من الاتصال بالإنترنت وأن مفتاح Oanor ما زال صالحًا.\n\n'+(e.message||''));
+   alert('تعذر تحديث الأسعار. تأكد من وجود OANOR_API_KEY في Vercel ثم اعمل Redeploy.\n\n'+(e.message||''));
  }
 }
 function loadLiveCache(){
