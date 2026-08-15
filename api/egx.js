@@ -1,7 +1,16 @@
 // Vercel Serverless Function: /api/egx
 // Required environment variable: OANOR_API_KEY
+
+function egxMarketOpen() {
+  const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" }));
+  const day = now.getDay();
+  const minutes = now.getHours() * 60 + now.getMinutes();
+  return day >= 0 && day <= 4 && minutes >= 600 && minutes < 870;
+}
 export default async function handler(req, res) {
   try {
+    if (!egxMarketOpen()) return res.status(409).json({ success:false, error:"EGX market is closed; last completed session should be used" });
+
     const key = process.env.OANOR_API_KEY;
     if (!key) return res.status(500).json({ success:false, error:"OANOR_API_KEY is not configured" });
 
