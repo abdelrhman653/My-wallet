@@ -227,14 +227,15 @@ function renderFundsAllocation(){
      <div class="fund-code">${f.t}</div>
      <div class="fund-name">${f.name}<br>${f.type}</div>
      <div class="fund-price">${has?f.p.toLocaleString('en-US',{minimumFractionDigits:4,maximumFractionDigits:4}):'—'} <span style="font-size:10px">جنيه</span></div>
-     <div class="fund-change ${change===null?'muted':change>=0?'green':'red'}">${change===null?'لا يوجد تغير محفوظ':(change>=0?'↑ +':'↓ ')+change.toFixed(2)+'%'}${has?' اليوم':''}</div>
+     <div class="fund-change ${change===null?'muted':change>=0?'green':'red'}">${change===null?'لا يوجد تغير محفوظ':(change>=0?'↑ +':'↓ ')+change.toFixed(2)+'%'}${has?' من آخر سعر محفوظ':''}</div>
+     <div class="small muted" style="margin-top:3px">${fundCache[f.t]?.updated ? 'آخر سعر معلن: '+fundCache[f.t].updated : 'لا يوجد تاريخ سعر محفوظ'}</div>
      <label class="small muted" style="display:block;margin-top:7px">نسبة التوزيع</label>
      <input class="fund-input" type="number" min="0" max="100" step="1" value="${f.share}" onchange="setFundShare('${f.t}',this.value)">
      <div class="small" style="margin-top:5px">${money(amount)}</div>
    </div>`;
  }).join('');
  const status=document.getElementById('fundStatus');
- if(status) status.textContent=fundLastDate?`الصناديق: آخر تحديث محفوظ ${fundLastDate}.`:'الصناديق: لم يتم تحديثها اليوم بعد.';
+ if(status) status.textContent=fundLastDate?`الصناديق: تم جلب آخر أسعار معلنة من المصدر — ${fundLastDate}.`:'الصناديق: لم يتم جلب أسعار معلنة بعد.';
 }
 function setFundShare(t,v){
  const f=funds.find(x=>x.t===t); if(!f)return;
@@ -256,11 +257,12 @@ async function refreshFunds(manual=false){
      f.c=Number.isFinite(old)&&old>0?((f.p-old)/old*100):null;
      fundCache[code]={p:f.p,c:f.c,updated:d.updated||today};
    });
-   fundLastDate=today;
+   fundLastDate=new Date().toISOString();
    localStorage.setItem('funds_live_cache',JSON.stringify(fundCache));
    localStorage.setItem('funds_last_date',fundLastDate);
    renderFundsAllocation();
-   if(status) status.textContent=`✅ تم تحديث الصناديق — ${new Date().toLocaleTimeString('ar-EG')}. قيمة الوثيقة تُحدّث دوريًا/يوميًا حسب الصندوق.`;
+   const dates=[...new Set(Object.values(j.data||{}).map(x=>x.updated).filter(Boolean))];
+   if(status) status.textContent=`✅ تم تحديث بيانات الصناديق — آخر سعر معلن حسب المصدر: ${dates.join(' / ')}. التحديث ليس لحظيًا مثل الأسهم.`;
    return true;
  }catch(e){
    if(status) status.textContent='❌ تعذر تحديث الصناديق الآن — آخر أسعار محفوظة ستظل كما هي.';
@@ -466,7 +468,7 @@ function resetDemo(){
 }
 function toggleTheme(){document.body.classList.toggle('light');if(document.body.classList.contains('light')){document.body.style.filter='invert(.93) hue-rotate(180deg)';}else{document.body.style.filter='none'}}
 loadLiveCache(); loadFundsCache(); renderEGX30(); renderStocks();renderFundsAllocation();renderAlloc();renderGroups();renderRecommendations();updateAll();setMarketStatus();startMarketTimer();
-const todayFunds=cairoDateString(); if(fundLastDate!==todayFunds) refreshFunds(false);
+const todayFunds=cairoDateString(); if(!fundLastDate || !fundLastDate.startsWith(todayFunds)) refreshFunds(false);
 </script>
 </body>
 </html>
