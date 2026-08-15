@@ -8,18 +8,18 @@
 :root{--bg:#07101d;--panel:#0d1828;--panel2:#111f32;--line:#24354c;--text:#f4f7fb;--muted:#91a0b4;--green:#4ddf72;--red:#ff6574;--blue:#6ca8ff;--gold:#f2b84b;--shadow:0 14px 35px rgba(0,0,0,.22)}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#050b14,#091525 45%,#07101d);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif}
 button,input,select{font:inherit}button{cursor:pointer;border:0}.wrap{max-width:1180px;margin:auto;padding:18px}
-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.brand h1{margin:0;font-size:25px}.brand p{margin:4px 0 0;color:var(--muted);font-size:13px}.top-actions{display:flex;gap:8px}.pill,.btn{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:10px 13px}.btn.primary{background:#2b8d3e;border-color:#3eb955}.btn.danger{background:#3a1820;border-color:#73313b}.grid{display:grid;grid-template-columns:330px 1fr;gap:16px}.side,.main{display:flex;flex-direction:column;gap:14px}.card{background:linear-gradient(145deg,rgba(17,31,50,.95),rgba(10,21,36,.95));border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}.card h2{font-size:16px;margin:0 0 12px}.muted{color:var(--muted)}.small{font-size:12px}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{padding:14px;border-radius:14px;background:var(--panel);border:1px solid var(--line)}.metric b{display:block;font-size:22px;margin-top:6px}.green{color:var(--green)}.red{color:var(--red)}.blue{color:var(--blue)}.gold{color:var(--gold)}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.brand h1{margin:0;font-size:25px}.brand p{margin:4px 0 0;color:var(--muted);font-size:13px}.top-actions{display:flex;gap:8px}.pill,.btn{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:10px 13px}.btn.primary{background:#2b8d3e;border-color:#3eb955}.btn.danger{background:#3a1820;border-color:#73313b}.grid{display:grid;grid-template-columns:330px 1fr;gap:16px}.side,.main{display:flex;flex-direction:column;gap:14px}.card{background:linear-gradient(145deg,rgba(17,31,50,.95),rgba(10,21,36,.95));border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}.card h2{font-size:16px;margin:0 0 12px}.fund-head{display:flex;justify-content:space-between;align-items:center;gap:8px}.fund-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.fund-mini{padding:10px;border:1px solid var(--line);border-radius:12px;background:rgba(5,15,27,.7);min-width:0}.fund-mini .fund-code{font-weight:900;font-size:15px}.fund-mini .fund-name{font-size:11px;color:var(--muted);min-height:30px;margin-top:3px}.fund-price{font-size:18px;font-weight:900;margin-top:7px}.fund-change{font-size:11px;margin-top:3px}.fund-input{width:100%;box-sizing:border-box;margin-top:7px;background:#071321;border:1px solid #24354c;color:#fff;border-radius:8px;padding:7px;font-size:12px}.fund-total{margin-top:10px}.fund-total .field{margin-top:6px}.fund-note{margin-top:8px}.fund-status{font-size:11px;color:var(--muted);margin-top:8px}@media(max-width:520px){.fund-grid{gap:6px}.fund-mini{padding:8px}.fund-mini .fund-name{font-size:10px}.fund-price{font-size:15px}}.muted{color:var(--muted)}.small{font-size:12px}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{padding:14px;border-radius:14px;background:var(--panel);border:1px solid var(--line)}.metric b{display:block;font-size:22px;margin-top:6px}.green{color:var(--green)}.red{color:var(--red)}.blue{color:var(--blue)}.gold{color:var(--gold)}
 label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{display:flex;gap:8px;align-items:center}.field input,.field select{width:100%;background:#081321;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px;outline:none}.field input:focus,.field select:focus{border-color:var(--blue)}
 .range{width:100%}.withdraw-box{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.mini{background:#091523;border:1px solid var(--line);padding:11px;border-radius:12px}.mini strong{display:block;font-size:18px;margin-top:4px}
 .stock-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stock{padding:13px;border-radius:14px;border:1px solid var(--line);background:#0a1625}.stock.up{box-shadow:inset 0 0 0 1px rgba(77,223,114,.22)}.stock.down{box-shadow:inset 0 0 0 1px rgba(255,101,116,.18)}.stock .row{display:flex;justify-content:space-between;gap:8px}.ticker{font-weight:800;font-size:16px}.price{font-size:19px;font-weight:800;margin:10px 0 4px}.change{font-size:12px;font-weight:700}.stock input{margin-top:9px;padding:7px;width:100%;background:#07111e;border:1px solid var(--line);border-radius:8px;color:#fff}
-.reco{display:grid;grid-template-columns:repeat(4,minmax(145px,1fr));gap:10px;overflow-x:auto;padding-bottom:2px}.reco .item{min-width:145px}.reco .item{background:#0a1826;border:1px solid #2d5537;border-radius:14px;padding:13px}.rank{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#1d6b30;font-weight:800}.amount{font-size:20px;font-weight:800;margin-top:7px}
+.reco{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.reco .item{background:#0a1826;border:1px solid #2d5537;border-radius:14px;padding:13px}.rank{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#1d6b30;font-weight:800}.amount{font-size:20px;font-weight:800;margin-top:7px}
 .groups{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.group{border:1px solid var(--line);border-radius:14px;padding:14px;background:#0a1725}.group h3{margin:0 0 8px}.group ul{margin:0;padding:0 18px 0 0}.group li{margin:6px 0}.group .total{margin-top:10px;padding-top:9px;border-top:1px solid var(--line);font-weight:800}
 .alloc{display:grid;gap:7px}.alloc-row{display:grid;grid-template-columns:55px 1fr 45px;gap:8px;align-items:center;font-size:12px}.bar{height:8px;background:#0a1220;border-radius:99px;overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,#2ea94f,#7ad7ff)}
 .sell{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sell-result{padding:14px;border-radius:13px;background:#0a1724;border:1px solid #38536f}.sell-result strong{font-size:22px}.note{background:#0a1522;border-right:3px solid var(--gold);padding:11px;border-radius:10px;color:#cbd6e4;font-size:12px;line-height:1.7}
 .checklist{display:grid;gap:7px}.check{display:flex;align-items:center;gap:8px;background:#091523;border:1px solid var(--line);padding:9px;border-radius:10px}.check input{accent-color:var(--green)}
 .footer{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.7}.market-status{margin-top:8px;padding:9px 11px;border-radius:10px;background:#091523;border:1px solid var(--line);font-size:12px}.btn:disabled{opacity:.5;cursor:not-allowed}
-@media(max-width:900px){.grid{grid-template-columns:1fr}.stock-grid{grid-template-columns:repeat(2,1fr)}.reco{grid-template-columns:repeat(4,minmax(145px,1fr))}.groups{grid-template-columns:1fr}.summary{grid-template-columns:1fr 1fr}.summary .metric:last-child{grid-column:1/-1}}
-@media(max-width:520px){.wrap{padding:10px}.stock-grid{grid-template-columns:1fr 1fr;gap:7px}.stock{padding:10px}.summary{grid-template-columns:1fr}.summary .metric:last-child{grid-column:auto}.sell{grid-template-columns:1fr}.top-actions{flex-wrap:wrap}.brand h1{font-size:21px}.portfolio-split{grid-template-columns:1fr 1fr!important}.portfolio-split .mini strong{font-size:16px}}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.stock-grid{grid-template-columns:repeat(2,1fr)}.reco{grid-template-columns:repeat(2,1fr)}.groups{grid-template-columns:1fr}.summary{grid-template-columns:1fr 1fr}.summary .metric:last-child{grid-column:1/-1}}
+@media(max-width:520px){.wrap{padding:10px}.stock-grid{grid-template-columns:1fr 1fr;gap:7px}.stock{padding:10px}.summary{grid-template-columns:1fr}.summary .metric:last-child{grid-column:auto}.sell{grid-template-columns:1fr}.top-actions{flex-wrap:wrap}.brand h1{font-size:21px}}
 
 /* Smart assistant */
 .smart{border:1px solid #315a78;background:linear-gradient(145deg,#0b1c2d,#0a1523)}
@@ -49,26 +49,9 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
 <div class="grid">
 <aside class="side">
   <section class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
-      <h2 style="margin:0">⭐ أفضل 4 أسهم لهذا الشهر</h2>
-      <span class="smart-badge" id="topRecoStatus">يتغير حسب بيانات الأسهم ومحفظتك</span>
-    </div>
-    <div class="reco" id="topRecommendations" style="margin-top:10px"></div>
-    <div class="note" style="margin-top:10px">الاختيار ليس ثابتًا: يتم ترتيب الـ12 سهمًا كل شهر حسب حركة السهم، الوزن الحالي في محفظتك، وهل تملكه بالفعل، مع السماح بعودة السهم إذا ظهرت فيه فرصة قوية جدًا.</div>
-  </section>
-
-  <section class="card">
-    <h2>💰 قيمة المحفظة والاستثمار</h2>
-    <div class="portfolio-split" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <div class="mini">
-        <span class="muted small">قيمة المحفظة الحالية</span>
-        <div class="field" style="margin-top:5px"><input id="portfolio" type="number" value="0" min="0" step="1000" oninput="updateAll()"><span>جنيه</span></div>
-      </div>
-      <div class="mini">
-        <span class="muted small">مبلغ الاستثمار الشهري</span>
-        <div class="field" style="margin-top:5px"><input id="monthlyInvestment" type="number" value="5000" min="0" step="100" oninput="updateAll()"><span>جنيه</span></div>
-      </div>
-    </div>
+    <h2>💰 قيمة المحفظة</h2>
+    <label>القيمة الحالية</label>
+    <div class="field"><input id="portfolio" type="number" value="0" min="0" step="1000" oninput="updateAll()"><span>جنيه</span></div>
     <div class="withdraw-box">
       <div class="mini"><span class="muted small">السحب السنوي</span><strong id="annual">0</strong></div>
       <div class="mini"><span class="muted small">السحب الشهري</span><strong id="monthly">0</strong></div>
@@ -80,9 +63,26 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
     <div class="note" style="margin-top:10px">الحساب = قيمة المحفظة × نسبة السحب. للسحب الشهري نقسم السحب السنوي على 12.</div>
   </section>
 
+  <section class="card" id="fundsBox">
+    <div class="fund-head"><h2 style="margin:0">🏦 الصناديق الثلاثة</h2><button class="btn" onclick="refreshFunds(true)">↻ تحديث الصناديق</button></div>
+    <div class="fund-total">
+      <label>مبلغ استثمار الصناديق الشهري</label>
+      <div class="field"><input id="fundMonthly" type="number" value="1000" min="0" step="100" oninput="renderFundsAllocation()"><span>جنيه</span></div>
+    </div>
+    <div class="fund-grid" style="margin-top:10px" id="fundGrid"></div>
+    <div class="fund-note note">المبلغ ده منفصل عن مبلغ الأسهم، ومش بيتحسب في إجمالي المستثمر أو الربح إلا لما تسجل قيمة استثمار فعلية في المحفظة.</div>
+    <div class="fund-status" id="fundStatus">الصناديق: لم يتم تحديثها اليوم بعد.</div>
+  </section>
+
   <section class="card">
     <h2>🛒 شراء الشهر</h2>
-    <div class="market-status" id="purchasePlanStatus">جاري حساب خطة الشراء…</div>
+    <div class="field">
+      <select id="month" onchange="renderRecommendations()">
+        <option value="1">الشهر 1 — المجموعة 1</option>
+        <option value="2">الشهر 2 — المجموعة 2</option>
+        <option value="3">الشهر 3 — المجموعة 3</option>
+      </select>
+    </div>
     <div style="margin-top:10px" class="checklist" id="checks"></div>
     <button class="btn primary" style="width:100%;margin-top:10px" onclick="savePurchases()">✓ حفظ ما تم شراؤه</button>
   </section>
@@ -122,9 +122,9 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
   </section>
 
   <section class="card">
-    <h2>⭐ تفاصيل التوصية الشهرية</h2>
+    <h2>⭐ التوصية الشهرية — الأسهم الأربعة لهذا الشهر</h2>
     <div class="reco" id="recommendations"></div>
-    <div class="note" style="margin-top:10px">المبلغ الشهري قابل للتعديل من قسم «قيمة المحفظة والاستثمار»، وسيعاد توزيع المبلغ تلقائيًا على أفضل 4 أسهم حسب قوة الفرصة. لا توجد مجموعات ثابتة.</div>
+    <div class="note" style="margin-top:10px">الـ5,000 جنيه الشهرية تُوزع داخل المجموعة حسب الأوزان المستهدفة، وليس بالتساوي بين الأسهم.</div>
   </section>
 
   <section class="card smart" id="smartBox">
@@ -173,7 +173,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
     <div class="note">
       1) كل شهر تستثمر 5,000 جنيه في مجموعة واحدة فقط، والمبالغ داخل المجموعة حسب الوزن المستهدف.<br>
       2) بعد الشهر الثالث ترجع للشهر الأول وتكرر الدورة.<br>
-      3) الصناديق الـ1,000 جنيه شهريًا منفصلة عن الأسهم ويمكن إضافتها لاحقًا.<br>
+      3) مبلغ الصناديق الشهري منفصل عن الأسهم، ويمكنك تغييره وتعديل نسبة توزيع الصناديق الثلاثة من الشاشة نفسها.<br>
       4) المساعد يرتب أسهم مجموعة الشهر باستخدام الوزن الفعلي + حركة اليوم؛ لا يعتبر ذلك ضمانًا للربح.<br>
       5) عند بدء السحب، احسب النسبة السنوية من قيمة المحفظة في بداية كل سنة ثم قسمها على 12.<br>
       6) اقتراح البيع يفضل السهم الأعلى زيادة عن وزنه، ويحسب تقريبًا قيمة البيع وعدد الأسهم من سعره الحالي.
@@ -198,18 +198,82 @@ const stocks=[
  {t:'MFPC',w:1,p:85.10,c:1.07,g:3},
  {t:'HRHO',w:1,p:24.30,c:-0.82,g:4},
 ];
-const groups={};
-const groupWeights={};
-let currentRecommendations=[];
+const groups={1:['COMI','TMGH','SWDY','FWRY'],2:['ADIB','ABUK','ETEL','ALCN'],3:['ORHD','TALM','MFPC','HRHO']};
+const groupWeights={1:66,2:27,3:7};
 let saved=JSON.parse(localStorage.getItem('purchases12')||'{}');
 let positions=JSON.parse(localStorage.getItem('positions12_v2')||'{}');
-const savedMonthlyInvestment=Number(localStorage.getItem('monthlyInvestment12')||5000);
+
+const funds=[
+ {t:'ABR',name:'بريق — دخل ثابت',type:'دخل ثابت',p:null,c:null,share:40},
+ {t:'BMM',name:'بلتون مية مية',type:'أسهم',p:null,c:null,share:35},
+ {t:'BSB',name:'بلتون سبائك',type:'ذهب',p:null,c:null,share:25}
+];
+let fundCache=JSON.parse(localStorage.getItem('funds_live_cache')||'{}');
+let fundLastDate=localStorage.getItem('funds_last_date')||'';
 
 function money(n){return new Intl.NumberFormat('ar-EG',{maximumFractionDigits:0}).format(Math.round(n))+' جنيه'}
+function cairoDateString(){
+ const d=new Date(new Date().toLocaleString('en-US',{timeZone:'Africa/Cairo'}));
+ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function renderFundsAllocation(){
+ const total=Math.max(0,+document.getElementById('fundMonthly')?.value||0);
+ const box=document.getElementById('fundGrid'); if(!box)return;
+ box.innerHTML=funds.map(f=>{
+   const amount=total*f.share/100;
+   const has=Number.isFinite(f.p);
+   const change=Number.isFinite(f.c)?f.c:null;
+   return `<div class="fund-mini">
+     <div class="fund-code">${f.t}</div>
+     <div class="fund-name">${f.name}<br>${f.type}</div>
+     <div class="fund-price">${has?f.p.toLocaleString('en-US',{minimumFractionDigits:4,maximumFractionDigits:4}):'—'} <span style="font-size:10px">جنيه</span></div>
+     <div class="fund-change ${change===null?'muted':change>=0?'green':'red'}">${change===null?'لا يوجد تغير محفوظ':(change>=0?'↑ +':'↓ ')+change.toFixed(2)+'%'}${has?' اليوم':''}</div>
+     <label class="small muted" style="display:block;margin-top:7px">نسبة التوزيع</label>
+     <input class="fund-input" type="number" min="0" max="100" step="1" value="${f.share}" onchange="setFundShare('${f.t}',this.value)">
+     <div class="small" style="margin-top:5px">${money(amount)}</div>
+   </div>`;
+ }).join('');
+ const status=document.getElementById('fundStatus');
+ if(status) status.textContent=fundLastDate?`الصناديق: آخر تحديث محفوظ ${fundLastDate}.`:'الصناديق: لم يتم تحديثها اليوم بعد.';
+}
+function setFundShare(t,v){
+ const f=funds.find(x=>x.t===t); if(!f)return;
+ f.share=Math.max(0,Math.min(100,Number(v)||0));
+ renderFundsAllocation();
+}
+async function refreshFunds(manual=false){
+ const status=document.getElementById('fundStatus');
+ if(status) status.textContent='⏳ جاري جلب أسعار وثائق الصناديق…';
+ try{
+   const r=await fetch('/api/funds',{headers:{'Accept':'application/json'},cache:'no-store'});
+   const j=await r.json();
+   if(!r.ok || !j.success) throw new Error(j.error||('HTTP '+r.status));
+   const today=cairoDateString();
+   Object.entries(j.data||{}).forEach(([code,d])=>{
+     const f=funds.find(x=>x.t===code); if(!f||!Number.isFinite(Number(d.price)))return;
+     const old=Number(fundCache[code]?.p);
+     f.p=Number(d.price);
+     f.c=Number.isFinite(old)&&old>0?((f.p-old)/old*100):null;
+     fundCache[code]={p:f.p,c:f.c,updated:d.updated||today};
+   });
+   fundLastDate=today;
+   localStorage.setItem('funds_live_cache',JSON.stringify(fundCache));
+   localStorage.setItem('funds_last_date',fundLastDate);
+   renderFundsAllocation();
+   if(status) status.textContent=`✅ تم تحديث الصناديق — ${new Date().toLocaleTimeString('ar-EG')}. قيمة الوثيقة تُحدّث دوريًا/يوميًا حسب الصندوق.`;
+   return true;
+ }catch(e){
+   if(status) status.textContent='❌ تعذر تحديث الصناديق الآن — آخر أسعار محفوظة ستظل كما هي.';
+   if(manual) alert('فشل تحديث الصناديق: '+e.message);
+   return false;
+ }
+}
+function loadFundsCache(){
+ try{Object.entries(fundCache).forEach(([code,d])=>{const f=funds.find(x=>x.t===code);if(f&&Number.isFinite(+d.p)){f.p=+d.p;f.c=Number.isFinite(+d.c)?+d.c:null;}});}catch(e){}
+}
+
 function updateAll(){
  const pv=Math.max(0,+document.getElementById('portfolio').value||0), rate=+document.getElementById('rate').value||0;
- const mi=Math.max(0,+document.getElementById('monthlyInvestment').value||0);
- localStorage.setItem('monthlyInvestment12',String(mi));
  const invested=Object.values(positions).reduce((a,v)=>a+(Number(v)||0),0);
  const profit=pv-invested, pct=invested?profit/invested*100:0;
  document.getElementById('rateText').textContent=rate+'%';
@@ -245,78 +309,34 @@ function buyScore(s,pv){
  // Momentum helps rank the four planned names, while underweight gets more importance.
  return under*4 + momentum;
 }
-function getMonthlyInvestment(){
- return Math.max(0,+document.getElementById('monthlyInvestment').value||0);
-}
-function isOwned(t){ return Number(positions[t]||0)>0; }
-function recommendationScore(s,pv){
- const actual=getActualWeight(s,pv);
- const under=Math.max(-5, Math.min(20, s.w-actual));
- const momentum=Math.max(-8, Math.min(8, Number(s.c)||0));
- const owned=isOwned(s);
- // الملكية لا تمنع الاختيار؛ السهم المملوك يظل مرشحًا إذا كانت فرصته قوية.
- let score=50 + under*3.2 + momentum*2.4;
- if(!owned) score += 3;
- // فرصة استثنائية: حركة قوية مع كون السهم أقل من وزنه.
- if(momentum>=4 && under>0) score += 12;
- if(momentum>=6 && under>=1) score += 8;
- return Math.max(0,Math.min(100,score));
-}
-function buildRecommendations(){
- const pv=+document.getElementById('portfolio').value||0;
- return [...stocks]
-   .map(s=>({...s,score:recommendationScore(s,pv),owned:isOwned(s),actual:getActualWeight(s,pv)}))
-   .sort((a,b)=>b.score-a.score)
-   .slice(0,4);
-}
-function allocationForRecommendations(ranked,total){
- if(!ranked.length || total<=0) return [];
- const base=ranked.map(s=>Math.max(10,s.score));
- const sum=base.reduce((a,b)=>a+b,0);
- return ranked.map((s,i)=>total*base[i]/sum);
-}
-function recommendationCard(s,i,amount){
- const gap=s.w-s.actual;
- const label=gap>0.25?'أقل من وزنه':gap<-0.25?'أعلى من وزنه':'قريب من الوزن';
- const exceptional=s.score>=88?'🔥 فرصة قوية جدًا':s.score>=78?'⭐ فرصة قوية':'مرشح جيد';
- return `<div class="item"><span class="rank">${i+1}</span><div style="font-weight:800;margin-top:7px">${s.t}</div><div class="muted small">${exceptional}</div><div class="amount">${money(amount)}</div><div class="small ${s.c>=0?'green':'red'}">${s.c>=0?'↑':'↓'} ${s.c>0?'+':''}${s.c.toFixed(2)}% اليوم</div><div class="small muted">${s.owned?'موجود في محفظتك':'غير موجود في محفظتك'} · ${label}</div><div class="small muted">تقييم ${s.score.toFixed(0)}/100</div></div>`;
-}
 function renderRecommendations(){
- const total=getMonthlyInvestment();
- const ranked=buildRecommendations();
- currentRecommendations=ranked;
- const amounts=allocationForRecommendations(ranked,total);
- const html=ranked.map((s,i)=>recommendationCard(s,i,amounts[i])).join('');
- const top=document.getElementById('topRecommendations');
- if(top) top.innerHTML=html || '<div class="muted small">أدخل مبلغ الاستثمار لعرض التوصيات.</div>';
- const rec=document.getElementById('recommendations');
- if(rec) rec.innerHTML=html || '<div class="muted small">لا توجد توصيات حاليًا.</div>';
- const checks=document.getElementById('checks');
- if(checks){
-   const monthKey=new Date().toISOString().slice(0,7);
-   checks.innerHTML=ranked.map(s=>`<label class="check"><input type="checkbox" ${saved[`${monthKey}-${s.t}`]?'checked':''} onchange="togglePurchase('${monthKey}','${s.t}',this.checked)"> تم شراء ${s.t} — ${money(amounts[ranked.indexOf(s)]||0)}</label>`).join('');
- }
- const status=document.getElementById('purchasePlanStatus');
- if(status) status.innerHTML=ranked.length?`خطة هذا الشهر: <b>${money(total)}</b> موزعة على أفضل 4 أسهم من أصل 12، حسب التقييم الحالي.`:'أدخل مبلغ الاستثمار الشهري أولًا.';
- renderSmartBuy(null,ranked,amounts);
+ const m=+document.getElementById('month').value;
+ const arr=groups[m], total=groupWeights[m], pv=+document.getElementById('portfolio').value||0;
+ const ranked=arr.map(t=>stocks.find(x=>x.t===t)).sort((a,b)=>buyScore(b,pv)-buyScore(a,pv));
+ document.getElementById('recommendations').innerHTML=ranked.map((s,i)=>{
+   const amt=5000*s.w/total, actual=getActualWeight(s,pv), gap=s.w-actual;
+   const label=gap>0.25?'أقل من وزنه':gap<-0.25?'أعلى من وزنه':'قريب من الوزن';
+   return `<div class="item"><span class="rank">${i+1}</span><div style="font-weight:800;margin-top:7px">${s.t}</div><div class="muted small">هدف ${s.w}% · فعلي ${actual.toFixed(2)}%</div><div class="amount">${money(amt)}</div><div class="small ${s.c>=0?'green':'red'}">${s.c>=0?'↑':'↓'} ${s.c>0?'+':''}${s.c.toFixed(2)}% اليوم</div><div class="small muted">${label}</div></div>`;
+ }).join('');
+ document.getElementById('checks').innerHTML=arr.map(t=>`<label class="check"><input type="checkbox" ${saved[`${m}-${t}`]?'checked':''} onchange="togglePurchase('${m}','${t}',this.checked)"> تم شراء ${t}</label>`).join('');
+ renderSmartBuy(m,ranked);
 }
-function renderSmartBuy(m,ranked,amounts){
+function renderSmartBuy(m,ranked){
  const box=document.getElementById('smartBuys');
- const pv=+document.getElementById('portfolio').value||0;
+ const pv=+document.getElementById('portfolio').value||0, total=groupWeights[m];
  box.innerHTML=ranked.map((s,i)=>{
-   const score=s.score||recommendationScore(s,pv);
-   return `<div class="signal"><div><b>${i+1}. ${s.t}</b><div class="small muted">${s.owned?'موجود بالمحفظة':'غير مملوك'} · ${s.c>=0?'صاعد':'هابط'} ${s.c>0?'+':''}${s.c.toFixed(2)}% · تقييم ${score.toFixed(0)}/100</div><div class="buy-meter"><span style="width:${score}%"></span></div></div><div class="tag">${money(amounts[i]||0)}</div></div>`;
+   const amt=5000*s.w/total, actual=getActualWeight(s,pv), gap=s.w-actual;
+   const score=Math.max(0,Math.min(100,50+buyScore(s,pv)*3));
+   return `<div class="signal"><div><b>${i+1}. ${s.t}</b><div class="small muted">${s.c>=0?'صاعد':'هابط'} ${s.c>0?'+':''}${s.c.toFixed(2)}% · هدف ${s.w}% · فعلي ${actual.toFixed(2)}%</div><div class="buy-meter"><span style="width:${score}%"></span></div></div><div class="tag">${money(amt)}</div></div>`;
  }).join('');
  const top=ranked[0];
  const sig=document.getElementById('smartSignal');
  if(top){
-   const gap=top.w-top.actual;
-   sig.innerHTML=`<b>${top.t}</b> هو أقوى ترشيح حاليًا بدرجة <b>${top.score.toFixed(0)}/100</b>.<br><br><span class="${top.c>=0?'green':'red'}">حركة اليوم: ${top.c>0?'+':''}${top.c.toFixed(2)}%</span><br>الفجوة عن الوزن المستهدف: <b>${gap>=0?'+':''}${gap.toFixed(2)} نقطة مئوية</b><br><span class="small muted">${top.owned?'موجود في محفظتك، لكن ملكيته لا تمنع اختياره مرة أخرى إذا كانت الفرصة قوية.':'غير موجود في محفظتك حاليًا.'}</span>`;
+   const actual=getActualWeight(top,pv), gap=top.w-actual;
+   sig.innerHTML=`<b>${top.t}</b> هو الأول داخل مجموعة هذا الشهر حسب الوزن الفعلي + حركة اليوم.<br><br><span class="${top.c>=0?'green':'red'}">حركة اليوم: ${top.c>0?'+':''}${top.c.toFixed(2)}%</span><br>الفجوة عن الوزن المستهدف: <b>${gap>=0?'+':''}${gap.toFixed(2)} نقطة مئوية</b>`;
  }
  const st=document.getElementById('smartStatus');
  st.textContent=liveConnected?'بيانات سوق متصلة':'بيانات يدوية / آخر تحديث محفوظ';
- const ts=document.getElementById('topRecoStatus');
- if(ts) ts.textContent=ranked.length?'تقييم متغير من الـ12 سهمًا':'في انتظار البيانات';
 }
 
 function togglePurchase(m,t,v){saved[`${m}-${t}`]=v;localStorage.setItem('purchases12',JSON.stringify(saved))}
@@ -324,7 +344,12 @@ function savePurchases(){localStorage.setItem('purchases12',JSON.stringify(saved
 function renderAlloc(){
  document.getElementById('alloc').innerHTML=stocks.map(s=>`<div class="alloc-row"><b>${s.t}</b><div class="bar"><span style="width:${s.w*4.5}%"></span></div><span>${s.w}%</span></div>`).join('');
 }
-function renderGroups(){ /* لم تعد هناك مجموعات ثابتة؛ التوصيات ديناميكية. */ }
+function renderGroups(){
+ document.getElementById('groups').innerHTML=[1,2,3].map(m=>{
+  const total=groupWeights[m], arr=groups[m];
+  return `<div class="group"><h3>المجموعة ${m} — الشهر ${m}</h3><ul>${arr.map(t=>{const s=stocks.find(x=>x.t===t);return `<li><b>${t}</b> — ${money(5000*s.w/total)}</li>`}).join('')}</ul><div class="total">إجمالي الشهر: 5,000 جنيه</div></div>`;
+ }).join('');
+}
 function renderPositions(){
  const pv=+document.getElementById('portfolio').value||0;
  const tb=document.getElementById('positions');
@@ -440,7 +465,8 @@ function resetDemo(){
  alert('لن يتم استبدال الأسعار الحقيقية ببيانات تجريبية. استخدم زر تحديث EGX الحقيقي أثناء السوق المفتوح.');
 }
 function toggleTheme(){document.body.classList.toggle('light');if(document.body.classList.contains('light')){document.body.style.filter='invert(.93) hue-rotate(180deg)';}else{document.body.style.filter='none'}}
-loadLiveCache(); renderEGX30(); renderStocks();renderAlloc();renderGroups();renderRecommendations();updateAll();setMarketStatus();startMarketTimer();
+loadLiveCache(); loadFundsCache(); renderEGX30(); renderStocks();renderFundsAllocation();renderAlloc();renderGroups();renderRecommendations();updateAll();setMarketStatus();startMarketTimer();
+const todayFunds=cairoDateString(); if(fundLastDate!==todayFunds) refreshFunds(false);
 </script>
 </body>
 </html>
