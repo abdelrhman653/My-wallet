@@ -8,18 +8,19 @@
 :root{--bg:#07101d;--panel:#0d1828;--panel2:#111f32;--line:#24354c;--text:#f4f7fb;--muted:#91a0b4;--green:#4ddf72;--red:#ff6574;--blue:#6ca8ff;--gold:#f2b84b;--shadow:0 14px 35px rgba(0,0,0,.22)}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#050b14,#091525 45%,#07101d);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif}
 button,input,select{font:inherit}button{cursor:pointer;border:0}.wrap{max-width:1180px;margin:auto;padding:18px}
-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.brand h1{margin:0;font-size:25px}.brand p{margin:4px 0 0;color:var(--muted);font-size:13px}.top-actions{display:flex;gap:8px}.pill,.btn{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:10px 13px}.btn.primary{background:#2b8d3e;border-color:#3eb955}.btn.danger{background:#3a1820;border-color:#73313b}.grid{display:grid;grid-template-columns:330px 1fr;gap:16px}.side,.main{display:flex;flex-direction:column;gap:14px}.card{background:linear-gradient(145deg,rgba(17,31,50,.95),rgba(10,21,36,.95));border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}.card h2{font-size:16px;margin:0 0 12px}.fund-head{display:flex;justify-content:space-between;align-items:center;gap:8px}.fund-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.fund-mini{padding:10px;border:1px solid var(--line);border-radius:12px;background:rgba(5,15,27,.7);min-width:0}.fund-mini .fund-code{font-weight:900;font-size:15px}.fund-mini .fund-name{font-size:11px;color:var(--muted);min-height:30px;margin-top:3px}.fund-price{font-size:18px;font-weight:900;margin-top:7px}.fund-change{font-size:11px;margin-top:3px}.fund-input{width:100%;box-sizing:border-box;margin-top:7px;background:#071321;border:1px solid #24354c;color:#fff;border-radius:8px;padding:7px;font-size:12px}.fund-total{margin-top:10px}.fund-total .field{margin-top:6px}.fund-note{margin-top:8px}.fund-status{font-size:11px;color:var(--muted);margin-top:8px}@media(max-width:520px){.fund-grid{gap:6px}.fund-mini{padding:8px}.fund-mini .fund-name{font-size:10px}.fund-price{font-size:15px}}.muted{color:var(--muted)}.small{font-size:12px}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{padding:14px;border-radius:14px;background:var(--panel);border:1px solid var(--line)}.metric b{display:block;font-size:22px;margin-top:6px}.green{color:var(--green)}.red{color:var(--red)}.blue{color:var(--blue)}.gold{color:var(--gold)}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.brand h1{margin:0;font-size:25px}.brand p{margin:4px 0 0;color:var(--muted);font-size:13px}.top-actions{display:flex;gap:8px}.pill,.btn{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:10px 13px}.btn.primary{background:#2b8d3e;border-color:#3eb955}.btn.danger{background:#3a1820;border-color:#73313b}.grid{display:grid;grid-template-columns:330px 1fr;gap:16px}.side,.main{display:flex;flex-direction:column;gap:14px}.card{background:linear-gradient(145deg,rgba(17,31,50,.95),rgba(10,21,36,.95));border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}.card h2{font-size:16px;margin:0 0 12px}.muted{color:var(--muted)}.small{font-size:12px}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{padding:14px;border-radius:14px;background:var(--panel);border:1px solid var(--line)}.metric b{display:block;font-size:22px;margin-top:6px}.green{color:var(--green)}.red{color:var(--red)}.blue{color:var(--blue)}.gold{color:var(--gold)}
 label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{display:flex;gap:8px;align-items:center}.field input,.field select{width:100%;background:#081321;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px;outline:none}.field input:focus,.field select:focus{border-color:var(--blue)}
 .range{width:100%}.withdraw-box{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.mini{background:#091523;border:1px solid var(--line);padding:11px;border-radius:12px}.mini strong{display:block;font-size:18px;margin-top:4px}
 .stock-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stock{padding:13px;border-radius:14px;border:1px solid var(--line);background:#0a1625}.stock.up{box-shadow:inset 0 0 0 1px rgba(77,223,114,.22)}.stock.down{box-shadow:inset 0 0 0 1px rgba(255,101,116,.18)}.stock .row{display:flex;justify-content:space-between;gap:8px}.ticker{font-weight:800;font-size:16px}.price{font-size:19px;font-weight:800;margin:10px 0 4px}.change{font-size:12px;font-weight:700}.stock input{margin-top:9px;padding:7px;width:100%;background:#07111e;border:1px solid var(--line);border-radius:8px;color:#fff}
-.reco{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.reco .item{background:#0a1826;border:1px solid #2d5537;border-radius:14px;padding:13px}.rank{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#1d6b30;font-weight:800}.amount{font-size:20px;font-weight:800;margin-top:7px}
+.reco{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.reco .item{background:#0a1826;border:1px solid #2d5537;border-radius:14px;padding:12px;min-width:0;display:flex;flex-direction:column;justify-content:space-between}.reco .item.top-pick{border-color:#38a85a;box-shadow:0 0 0 1px rgba(56,168,90,.12),0 8px 24px rgba(0,0,0,.12)}.reco .ticker-big{font-size:18px;font-weight:900;margin-top:7px}.reco .opportunity{font-size:12px;margin-top:5px;color:#a9c0d5;line-height:1.5}.reco .allocation{font-size:22px;font-weight:900;margin-top:8px}.rank{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#1d6b30;font-weight:800}.amount{font-size:20px;font-weight:800;margin-top:7px}.reco-title{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.month-label{background:#0a1522;border:1px solid var(--line);border-radius:11px;padding:10px;font-size:12px;color:#cbd6e4}.allocation-explain{display:grid;gap:8px}.allocation-row{display:grid;grid-template-columns:70px 1fr 90px;gap:8px;align-items:center;padding:9px 10px;background:#091523;border:1px solid var(--line);border-radius:10px}.allocation-row .mini-bar{height:8px;background:#0a1220;border-radius:99px;overflow:hidden}.allocation-row .mini-bar span{display:block;height:100%;background:linear-gradient(90deg,#2ea94f,#7ad7ff)}
 .groups{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.group{border:1px solid var(--line);border-radius:14px;padding:14px;background:#0a1725}.group h3{margin:0 0 8px}.group ul{margin:0;padding:0 18px 0 0}.group li{margin:6px 0}.group .total{margin-top:10px;padding-top:9px;border-top:1px solid var(--line);font-weight:800}
 .alloc{display:grid;gap:7px}.alloc-row{display:grid;grid-template-columns:55px 1fr 45px;gap:8px;align-items:center;font-size:12px}.bar{height:8px;background:#0a1220;border-radius:99px;overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,#2ea94f,#7ad7ff)}
 .sell{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sell-result{padding:14px;border-radius:13px;background:#0a1724;border:1px solid #38536f}.sell-result strong{font-size:22px}.note{background:#0a1522;border-right:3px solid var(--gold);padding:11px;border-radius:10px;color:#cbd6e4;font-size:12px;line-height:1.7}
 .checklist{display:grid;gap:7px}.check{display:flex;align-items:center;gap:8px;background:#091523;border:1px solid var(--line);padding:9px;border-radius:10px}.check input{accent-color:var(--green)}
-.footer{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.7}.market-status{margin-top:8px;padding:9px 11px;border-radius:10px;background:#091523;border:1px solid var(--line);font-size:12px}.btn:disabled{opacity:.5;cursor:not-allowed}
+.footer{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.7}
 @media(max-width:900px){.grid{grid-template-columns:1fr}.stock-grid{grid-template-columns:repeat(2,1fr)}.reco{grid-template-columns:repeat(2,1fr)}.groups{grid-template-columns:1fr}.summary{grid-template-columns:1fr 1fr}.summary .metric:last-child{grid-column:1/-1}}
-@media(max-width:520px){.wrap{padding:10px}.stock-grid{grid-template-columns:1fr 1fr;gap:7px}.stock{padding:10px}.summary{grid-template-columns:1fr}.summary .metric:last-child{grid-column:auto}.sell{grid-template-columns:1fr}.top-actions{flex-wrap:wrap}.brand h1{font-size:21px}}
+@media(max-width:700px){.reco{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.reco .item{padding:10px}.reco .ticker-big{font-size:17px}.reco .allocation{font-size:19px}.smart-grid{grid-template-columns:1fr}.allocation-row{grid-template-columns:55px 1fr 82px}}
+@media(max-width:520px){.wrap{padding:8px}.card{padding:12px}.stock-grid{grid-template-columns:1fr 1fr;gap:7px}.stock{padding:10px}.summary{grid-template-columns:1fr}.summary .metric:last-child{grid-column:auto}.sell{grid-template-columns:1fr}.top-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px}.top-actions .pill{width:100%;font-size:12px;padding:9px 7px}.brand h1{font-size:20px;line-height:1.2}.brand p{font-size:11px}.reco{grid-template-columns:1fr 1fr}.reco .item{border-radius:11px;padding:9px}.reco .ticker-big{font-size:16px}.reco .allocation{font-size:18px}.smart-badge{font-size:10px;padding:6px 8px}.field input{font-size:18px}.allocation-row{grid-template-columns:50px 1fr 76px;font-size:11px}}
 
 /* Smart assistant */
 .smart{border:1px solid #315a78;background:linear-gradient(145deg,#0b1c2d,#0a1523)}
@@ -53,8 +54,8 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
     <label>القيمة الحالية</label>
     <div class="field"><input id="portfolio" type="number" value="0" min="0" step="1000" oninput="updateAll()"><span>جنيه</span></div>
     <div class="withdraw-box">
-      <div class="mini"><span class="muted small">السحب السنوي</span><strong id="annual">0</strong></div>
-      <div class="mini"><span class="muted small">السحب الشهري</span><strong id="monthly">0</strong></div>
+      <div class="mini"><span class="muted small">السحب السنوي</span><strong id="annual">7,500</strong></div>
+      <div class="mini"><span class="muted small">السحب الشهري</span><strong id="monthly">625</strong></div>
     </div>
     <div style="margin-top:10px">
       <label>نسبة السحب السنوية: <b id="rateText">3%</b></label>
@@ -63,26 +64,16 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
     <div class="note" style="margin-top:10px">الحساب = قيمة المحفظة × نسبة السحب. للسحب الشهري نقسم السحب السنوي على 12.</div>
   </section>
 
-  <section class="card" id="fundsBox">
-    <div class="fund-head"><h2 style="margin:0">🏦 الصناديق الثلاثة</h2><button class="btn" onclick="refreshFunds(true)">↻ تحديث الصناديق</button></div>
-    <div class="fund-total">
-      <label>مبلغ استثمار الصناديق الشهري</label>
-      <div class="field"><input id="fundMonthly" type="number" value="1000" min="0" step="100" oninput="renderFundsAllocation()"><span>جنيه</span></div>
-    </div>
-    <div class="fund-grid" style="margin-top:10px" id="fundGrid"></div>
-    <div class="fund-note note">المبلغ ده منفصل عن مبلغ الأسهم، ومش بيتحسب في إجمالي المستثمر أو الربح إلا لما تسجل قيمة استثمار فعلية في المحفظة.</div>
-    <div class="fund-status" id="fundStatus">الصناديق: لم يتم تحديثها اليوم بعد.</div>
+  <section class="card invest-card">
+    <h2>💵 مبلغ الاستثمار الشهري</h2>
+    <label>المبلغ الذي تريد استثماره هذا الشهر</label>
+    <div class="field"><input id="monthlyInvestment" type="number" value="5000" min="0" step="100" oninput="updateAll()"><span>جنيه</span></div>
+    <div class="small muted" style="margin-top:8px">غيّر المبلغ كما تريد، والتوزيع على الأسهم الأربعة يتغير تلقائيًا حسب قوة كل فرصة.</div>
   </section>
 
   <section class="card">
     <h2>🛒 شراء الشهر</h2>
-    <div class="field">
-      <select id="month" onchange="renderRecommendations()">
-        <option value="1">الشهر 1 — المجموعة 1</option>
-        <option value="2">الشهر 2 — المجموعة 2</option>
-        <option value="3">الشهر 3 — المجموعة 3</option>
-      </select>
-    </div>
+    <div class="month-label">⭐ أفضل 4 أسهم لهذا الشهر — الاختيار يتغير مع كل تحديث للأسعار</div>
     <div style="margin-top:10px" class="checklist" id="checks"></div>
     <button class="btn primary" style="width:100%;margin-top:10px" onclick="savePurchases()">✓ حفظ ما تم شراؤه</button>
   </section>
@@ -112,7 +103,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
 
   <section class="card index-card">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h2 style="margin:0">📈 مؤشر EGX 30</h2><button class="btn" onclick="refreshLive()">↻ تحديث</button></div>
-    <div class="index-grid" style="margin-top:10px"><div class="index-main"><div class="index-name">EGX 30 Index</div><div class="index-value" id="egx30Value">—</div><div class="index-change" id="egx30Change">في انتظار البيانات الحقيقية…</div></div><div class="index-mini"><div class="muted small">الافتتاح</div><strong id="egx30Open">—</strong><div class="muted small" style="margin-top:10px">أعلى / أدنى</div><strong id="egx30HighLow">—</strong></div></div><div class="market-status" id="marketStatus">جاري معرفة حالة السوق…</div>
+    <div class="index-grid" style="margin-top:10px"><div class="index-main"><div class="index-name">EGX 30 Index</div><div class="index-value" id="egx30Value">—</div><div class="index-change" id="egx30Change">في انتظار البيانات الحقيقية…</div></div><div class="index-mini"><div class="muted small">الافتتاح</div><strong id="egx30Open">—</strong><div class="muted small" style="margin-top:10px">أعلى / أدنى</div><strong id="egx30HighLow">—</strong></div></div>
   </section>
 
   <section class="card">
@@ -121,10 +112,10 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
     <div class="footer"><span id="dataStatus">الأسعار الحالية تجريبية.</span> <button class="btn" style="padding:6px 9px;margin-top:6px" onclick="refreshLive()">↻ تحديث الأسعار الآن</button></div>
   </section>
 
-  <section class="card">
-    <h2>⭐ التوصية الشهرية — الأسهم الأربعة لهذا الشهر</h2>
+  <section class="card reco-card">
+    <div class="reco-title"><h2 style="margin:0">⭐ أفضل 4 أسهم لهذا الشهر</h2><span class="smart-badge" id="recoBadge">تحليل متغير من الـ12 سهم</span></div>
     <div class="reco" id="recommendations"></div>
-    <div class="note" style="margin-top:10px">الـ5,000 جنيه الشهرية تُوزع داخل المجموعة حسب الأوزان المستهدفة، وليس بالتساوي بين الأسهم.</div>
+    <div class="note" style="margin-top:10px">💡 المبلغ لا يتوزع بالتساوي. كل سهم يأخذ نسبة من مبلغ الاستثمار حسب تقييم فرصته؛ السهم الأقوى يأخذ حصة أكبر، ويمكن أن يتكرر ترشيحه إذا ظلت فرصته قوية.</div>
   </section>
 
   <section class="card smart" id="smartBox">
@@ -145,7 +136,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
   <section class="card" id="sellBox">
     <h2>💸 خطة البيع الشهرية — سحب 3%</h2>
     <div class="sell">
-      <div class="sell-result"><span class="muted">المبلغ المطلوب هذا الشهر</span><br><strong id="sellAmount">0 جنيه</strong></div>
+      <div class="sell-result"><span class="muted">المبلغ المطلوب هذا الشهر</span><br><strong id="sellAmount">625 جنيه</strong></div>
       <div class="sell-result"><span class="muted">السهم المقترح للبيع</span><br><strong id="sellTicker">—</strong><div class="small muted" id="sellReason"></div><div class="small" id="sellShares" style="margin-top:6px"></div></div>
     </div>
     <div class="note" style="margin-top:10px">الموقع يقارن وزن كل سهم الفعلي بالوزن المستهدف ويقترح البيع من السهم الأكثر زيادة عن وزنه. أدخل قيمة كل مركز في الجدول أدناه ليصبح الاختيار أدق.</div>
@@ -158,8 +149,8 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
   </section>
 
   <section class="card">
-    <h2>🔄 المجموعات والدورة</h2>
-    <div class="groups" id="groups"></div>
+    <h2>🧠 كيف تم توزيع المبلغ؟</h2>
+    <div id="allocationExplain" class="allocation-explain"></div>
   </section>
 
   <section class="card" id="apiCard">
@@ -173,7 +164,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field{d
     <div class="note">
       1) كل شهر تستثمر 5,000 جنيه في مجموعة واحدة فقط، والمبالغ داخل المجموعة حسب الوزن المستهدف.<br>
       2) بعد الشهر الثالث ترجع للشهر الأول وتكرر الدورة.<br>
-      3) مبلغ الصناديق الشهري منفصل عن الأسهم، ويمكنك تغييره وتعديل نسبة توزيع الصناديق الثلاثة من الشاشة نفسها.<br>
+      3) الصناديق الـ1,000 جنيه شهريًا منفصلة عن الأسهم ويمكن إضافتها لاحقًا.<br>
       4) المساعد يرتب أسهم مجموعة الشهر باستخدام الوزن الفعلي + حركة اليوم؛ لا يعتبر ذلك ضمانًا للربح.<br>
       5) عند بدء السحب، احسب النسبة السنوية من قيمة المحفظة في بداية كل سنة ثم قسمها على 12.<br>
       6) اقتراح البيع يفضل السهم الأعلى زيادة عن وزنه، ويحسب تقريبًا قيمة البيع وعدد الأسهم من سعره الحالي.
@@ -201,91 +192,25 @@ const stocks=[
 const groups={1:['COMI','TMGH','SWDY','FWRY'],2:['ADIB','ABUK','ETEL','ALCN'],3:['ORHD','TALM','MFPC','HRHO']};
 const groupWeights={1:66,2:27,3:7};
 let saved=JSON.parse(localStorage.getItem('purchases12')||'{}');
-let positions=JSON.parse(localStorage.getItem('positions12_v2')||'{}');
-
-const funds=[
- {t:'ABR',name:'بريق — دخل ثابت',type:'دخل ثابت',p:null,c:null,share:40},
- {t:'BMM',name:'بلتون مية مية',type:'أسهم',p:null,c:null,share:35},
- {t:'BSB',name:'بلتون سبائك',type:'ذهب',p:null,c:null,share:25}
-];
-let fundCache=JSON.parse(localStorage.getItem('funds_live_cache')||'{}');
-let fundLastDate=localStorage.getItem('funds_last_date')||'';
+let positions=JSON.parse(localStorage.getItem('positions12')||'{}');
+let lastRecommendations=[];
 
 function money(n){return new Intl.NumberFormat('ar-EG',{maximumFractionDigits:0}).format(Math.round(n))+' جنيه'}
-function cairoDateString(){
- const d=new Date(new Date().toLocaleString('en-US',{timeZone:'Africa/Cairo'}));
- return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+function getInvestment(){
+ const el=document.getElementById('monthlyInvestment');
+ return Math.max(0,+el?.value||0);
 }
-function renderFundsAllocation(){
- const total=Math.max(0,+document.getElementById('fundMonthly')?.value||0);
- const box=document.getElementById('fundGrid'); if(!box)return;
- box.innerHTML=funds.map(f=>{
-   const amount=total*f.share/100;
-   const has=Number.isFinite(f.p);
-   const change=Number.isFinite(f.c)?f.c:null;
-   return `<div class="fund-mini">
-     <div class="fund-code">${f.t}</div>
-     <div class="fund-name">${f.name}<br>${f.type}</div>
-     <div class="fund-price">${has?f.p.toLocaleString('en-US',{minimumFractionDigits:4,maximumFractionDigits:4}):'—'} <span style="font-size:10px">جنيه</span></div>
-     <div class="fund-change ${change===null?'muted':change>=0?'green':'red'}">${change===null?'لا يوجد تغير محفوظ':(change>=0?'↑ +':'↓ ')+change.toFixed(2)+'%'}${has?' من آخر سعر محفوظ':''}</div>
-     <div class="small muted" style="margin-top:3px">${fundCache[f.t]?.updated ? 'آخر سعر معلن: '+fundCache[f.t].updated : 'لا يوجد تاريخ سعر محفوظ'}</div>
-     <label class="small muted" style="display:block;margin-top:7px">نسبة التوزيع</label>
-     <input class="fund-input" type="number" min="0" max="100" step="1" value="${f.share}" onchange="setFundShare('${f.t}',this.value)">
-     <div class="small" style="margin-top:5px">${money(amount)}</div>
-   </div>`;
- }).join('');
- const status=document.getElementById('fundStatus');
- if(status) status.textContent=fundLastDate?`الصناديق: تم جلب آخر أسعار معلنة من المصدر — ${fundLastDate}.`:'الصناديق: لم يتم جلب أسعار معلنة بعد.';
-}
-function setFundShare(t,v){
- const f=funds.find(x=>x.t===t); if(!f)return;
- f.share=Math.max(0,Math.min(100,Number(v)||0));
- renderFundsAllocation();
-}
-async function refreshFunds(manual=false){
- const status=document.getElementById('fundStatus');
- if(status) status.textContent='⏳ جاري جلب أسعار وثائق الصناديق…';
- try{
-   const r=await fetch('/api/funds',{headers:{'Accept':'application/json'},cache:'no-store'});
-   const j=await r.json();
-   if(!r.ok || !j.success) throw new Error(j.error||('HTTP '+r.status));
-   const today=cairoDateString();
-   Object.entries(j.data||{}).forEach(([code,d])=>{
-     const f=funds.find(x=>x.t===code); if(!f||!Number.isFinite(Number(d.price)))return;
-     const old=Number(fundCache[code]?.p);
-     f.p=Number(d.price);
-     f.c=Number.isFinite(old)&&old>0?((f.p-old)/old*100):null;
-     fundCache[code]={p:f.p,c:f.c,updated:d.updated||today};
-   });
-   fundLastDate=new Date().toISOString();
-   localStorage.setItem('funds_live_cache',JSON.stringify(fundCache));
-   localStorage.setItem('funds_last_date',fundLastDate);
-   renderFundsAllocation();
-   const dates=[...new Set(Object.values(j.data||{}).map(x=>x.updated).filter(Boolean))];
-   if(status) status.textContent=`✅ تم تحديث بيانات الصناديق — آخر سعر معلن حسب المصدر: ${dates.join(' / ')}. التحديث ليس لحظيًا مثل الأسهم.`;
-   return true;
- }catch(e){
-   if(status) status.textContent='❌ تعذر تحديث الصناديق الآن — آخر أسعار محفوظة ستظل كما هي.';
-   if(manual) alert('فشل تحديث الصناديق: '+e.message);
-   return false;
- }
-}
-function loadFundsCache(){
- try{Object.entries(fundCache).forEach(([code,d])=>{const f=funds.find(x=>x.t===code);if(f&&Number.isFinite(+d.p)){f.p=+d.p;f.c=Number.isFinite(+d.c)?+d.c:null;}});}catch(e){}
-}
-
 function updateAll(){
- const pv=Math.max(0,+document.getElementById('portfolio').value||0), rate=+document.getElementById('rate').value||0;
- const invested=Object.values(positions).reduce((a,v)=>a+(Number(v)||0),0);
- const profit=pv-invested, pct=invested?profit/invested*100:0;
+ const pv=+document.getElementById('portfolio').value||0, rate=+document.getElementById('rate').value||0;
+ const investment=getInvestment();
  document.getElementById('rateText').textContent=rate+'%';
  document.getElementById('annual').textContent=money(pv*rate/100);
  document.getElementById('monthly').textContent=money(pv*rate/100/12);
  document.getElementById('sellAmount').textContent=money(pv*rate/100/12);
  document.getElementById('pv').textContent=money(pv);
- const inv=document.getElementById('invested'), pr=document.getElementById('profit'), pp=document.getElementById('profitPct');
- inv.textContent=money(invested); pr.textContent=(profit>0?'+':'')+money(profit).replace(' جنيه','');
- pr.className=profit>=0?'green':'red'; pp.textContent=(pct>0?'+':'')+pct.toFixed(2)+'%'; pp.className=profit>=0?'green small':'red small';
+ document.getElementById('invested').textContent='0 جنيه';
+ document.getElementById('profit').textContent='0 جنيه';
+ document.getElementById('profitPct').textContent='0%';
  renderPositions(); chooseSell(); renderRecommendations();
 }
 function renderStocks(){
@@ -304,71 +229,103 @@ function getActualWeight(s,pv){
  const val=positions[s.t]??0;
  return pv?val/pv*100:0;
 }
-function buyScore(s,pv){
+function opportunityScore(s,pv){
  const actual=getActualWeight(s,pv);
- const under=s.w-actual;
- const momentum=Math.max(-10,Math.min(10,s.c));
- // Momentum helps rank the four planned names, while underweight gets more importance.
- return under*4 + momentum;
+ const under=Math.max(-10,Math.min(10,s.w-actual));
+ const pos=positions[s.t]||0;
+ const momentum=Math.max(-5,Math.min(5,s.c));
+ let score=50 + momentum*5 + under*2.4;
+ if(!pos) score+=5;
+ if(s.c>=3) score+=10;
+ else if(s.c>=2) score+=5;
+ if(s.c<=-3) score-=12;
+ else if(s.c<=-1) score-=4;
+ return Math.max(1,Math.min(100,score));
+}
+function allocateByOpportunity(ranked,total){
+ if(!total || !ranked.length) return ranked.map(()=>0);
+ const floor=0.08, cap=0.45;
+ const raw=ranked.map(s=>Math.pow(opportunityScore(s,+document.getElementById('portfolio').value||0),1.8));
+ let weights=raw.map(x=>x/raw.reduce((a,b)=>a+b,0));
+ // Keep every selected stock meaningful while still strongly favoring the best opportunity.
+ weights=weights.map(x=>Math.max(floor,Math.min(cap,x)));
+ for(let k=0;k<10;k++){
+   const sum=weights.reduce((a,b)=>a+b,0);
+   const diff=1-sum;
+   if(Math.abs(diff)<0.0001) break;
+   if(diff>0){
+     const room=weights.map(x=>cap-x); const rsum=room.reduce((a,b)=>a+Math.max(0,b),0);
+     if(!rsum) break;
+     weights=weights.map((x,i)=>x+Math.max(0,room[i])/rsum*diff);
+   }else{
+     const room=weights.map(x=>x-floor); const rsum=room.reduce((a,b)=>a+Math.max(0,b),0);
+     if(!rsum) break;
+     weights=weights.map((x,i)=>x-Math.max(0,room[i])/rsum*(-diff));
+   }
+ }
+ const amounts=weights.map(w=>Math.floor(total*w));
+ let rem=Math.round(total-amounts.reduce((a,b)=>a+b,0));
+ const order=amounts.map((v,i)=>i).sort((a,b)=>weights[b]-weights[a]);
+ let j=0; while(rem>0 && order.length){amounts[order[j%order.length]]++;rem--;j++;}
+ return amounts;
 }
 function renderRecommendations(){
- const m=+document.getElementById('month').value;
- const arr=groups[m], total=groupWeights[m], pv=+document.getElementById('portfolio').value||0;
- const ranked=arr.map(t=>stocks.find(x=>x.t===t)).sort((a,b)=>buyScore(b,pv)-buyScore(a,pv));
- document.getElementById('recommendations').innerHTML=ranked.map((s,i)=>{
-   const amt=5000*s.w/total, actual=getActualWeight(s,pv), gap=s.w-actual;
-   const label=gap>0.25?'أقل من وزنه':gap<-0.25?'أعلى من وزنه':'قريب من الوزن';
-   return `<div class="item"><span class="rank">${i+1}</span><div style="font-weight:800;margin-top:7px">${s.t}</div><div class="muted small">هدف ${s.w}% · فعلي ${actual.toFixed(2)}%</div><div class="amount">${money(amt)}</div><div class="small ${s.c>=0?'green':'red'}">${s.c>=0?'↑':'↓'} ${s.c>0?'+':''}${s.c.toFixed(2)}% اليوم</div><div class="small muted">${label}</div></div>`;
+ const pv=+document.getElementById('portfolio').value||0;
+ const investment=getInvestment();
+ const ranked=stocks.slice().sort((a,b)=>opportunityScore(b,pv)-opportunityScore(a,pv));
+ const top4=ranked.slice(0,4);
+ const amounts=allocateByOpportunity(top4,investment);
+ lastRecommendations=top4.map((s,i)=>({s,amount:amounts[i],score:opportunityScore(s,pv)}));
+ document.getElementById('recommendations').innerHTML=top4.map((s,i)=>{
+   const actual=getActualWeight(s,pv), gap=s.w-actual, score=lastRecommendations[i].score;
+   const label=!positions[s.t]?'غير موجود في محفظتك':gap>0.25?'أقل من وزنه':gap<-0.25?'أعلى من وزنه':'قريب من الوزن';
+   const exceptional=score>=82;
+   return `<div class="item ${i===0?'top-pick':''}"><span class="rank">${i+1}</span><div class="ticker-big">${s.t}</div><div class="opportunity">${exceptional?'🔥 فرصة قوية جدًا':'📌 فرصة جيدة'} · تقييم ${score}/100</div><div class="allocation">${money(amounts[i])}</div><div class="small ${s.c>=0?'green':'red'}">${s.c>=0?'↑':'↓'} ${s.c>0?'+':''}${s.c.toFixed(2)}% اليوم</div><div class="small muted">${label}</div><div class="small muted">وزنه المستهدف ${s.w}%</div></div>`;
  }).join('');
- document.getElementById('checks').innerHTML=arr.map(t=>`<label class="check"><input type="checkbox" ${saved[`${m}-${t}`]?'checked':''} onchange="togglePurchase('${m}','${t}',this.checked)"> تم شراء ${t}</label>`).join('');
- renderSmartBuy(m,ranked);
+ const totalShown=amounts.reduce((a,b)=>a+b,0);
+ document.getElementById('recoBadge').textContent=`توزيع ذكي من الـ12 سهم · ${money(totalShown)}`;
+ document.getElementById('checks').innerHTML=top4.map(t=>`<label class="check"><input type="checkbox" ${saved[`current-${t.t}`]?'checked':''} onchange="togglePurchase('current','${t.t}',this.checked)"> تم شراء ${t.t} — ${money(amounts[top4.findIndex(x=>x.t===t.t)])}</label>`).join('');
+ renderSmartBuy('current',top4);
+ renderAllocationExplain(top4,amounts);
 }
 function renderSmartBuy(m,ranked){
- const box=document.getElementById('smartBuys');
- const pv=+document.getElementById('portfolio').value||0, total=groupWeights[m];
- box.innerHTML=ranked.map((s,i)=>{
-   const amt=5000*s.w/total, actual=getActualWeight(s,pv), gap=s.w-actual;
-   const score=Math.max(0,Math.min(100,50+buyScore(s,pv)*3));
-   return `<div class="signal"><div><b>${i+1}. ${s.t}</b><div class="small muted">${s.c>=0?'صاعد':'هابط'} ${s.c>0?'+':''}${s.c.toFixed(2)}% · هدف ${s.w}% · فعلي ${actual.toFixed(2)}%</div><div class="buy-meter"><span style="width:${score}%"></span></div></div><div class="tag">${money(amt)}</div></div>`;
- }).join('');
- const top=ranked[0];
- const sig=document.getElementById('smartSignal');
- if(top){
-   const actual=getActualWeight(top,pv), gap=top.w-actual;
-   sig.innerHTML=`<b>${top.t}</b> هو الأول داخل مجموعة هذا الشهر حسب الوزن الفعلي + حركة اليوم.<br><br><span class="${top.c>=0?'green':'red'}">حركة اليوم: ${top.c>0?'+':''}${top.c.toFixed(2)}%</span><br>الفجوة عن الوزن المستهدف: <b>${gap>=0?'+':''}${gap.toFixed(2)} نقطة مئوية</b>`;
- }
- const st=document.getElementById('smartStatus');
- st.textContent=liveConnected?'بيانات سوق متصلة':'بيانات يدوية / آخر تحديث محفوظ';
+ const box=document.getElementById('smartBuys'); if(!box)return;
+ const pv=+document.getElementById('portfolio').value||0;
+ const amounts=allocateByOpportunity(ranked,getInvestment());
+ box.innerHTML=ranked.map((s,i)=>{const score=opportunityScore(s,pv);return `<div class="signal"><div><b>${i+1}. ${s.t}</b><div class="small muted">تقييم الفرصة ${score}/100 · ${s.c>=0?'صاعد':'هابط'} ${s.c>0?'+':''}${s.c.toFixed(2)}%</div><div class="buy-meter"><span style="width:${score}%"></span></div></div><div class="tag">${money(amounts[i])}</div></div>`}).join('');
+ const top=ranked[0],sig=document.getElementById('smartSignal');
+ if(top){const score=opportunityScore(top,pv),actual=getActualWeight(top,pv),gap=top.w-actual;sig.innerHTML=`<b>${top.t}</b> هو صاحب أعلى تقييم فرصة حاليًا (${score}/100).<br><br><span class="${top.c>=0?'green':'red'}">حركة اليوم: ${top.c>0?'+':''}${top.c.toFixed(2)}%</span><br>الفجوة عن الوزن المستهدف: <b>${gap>=0?'+':''}${gap.toFixed(2)} نقطة مئوية</b>`;}
+ const st=document.getElementById('smartStatus'); if(st)st.textContent=liveConnected?'بيانات سوق متصلة':'بيانات يدوية / آخر تحديث محفوظ';
 }
-
+function renderAllocationExplain(ranked,amounts){
+ const box=document.getElementById('allocationExplain'); if(!box)return;
+ const total=getInvestment()||0;
+ box.innerHTML=ranked.map((s,i)=>{const pct=total?amounts[i]/total*100:0;return `<div class="allocation-row"><b>${s.t}</b><div class="mini-bar"><span style="width:${pct}%"></span></div><strong>${pct.toFixed(1)}% · ${money(amounts[i])}</strong></div>`}).join('')+`<div class="small muted">الإجمالي: ${money(total)}. النسب تتغير مع الأسعار وتقييم الفرص، وليست 25% لكل سهم.</div>`;
+}
 function togglePurchase(m,t,v){saved[`${m}-${t}`]=v;localStorage.setItem('purchases12',JSON.stringify(saved))}
 function savePurchases(){localStorage.setItem('purchases12',JSON.stringify(saved));alert('تم حفظ حالة المشتريات على هذا الجهاز.')}
-function renderAlloc(){
- document.getElementById('alloc').innerHTML=stocks.map(s=>`<div class="alloc-row"><b>${s.t}</b><div class="bar"><span style="width:${s.w*4.5}%"></span></div><span>${s.w}%</span></div>`).join('');
-}
+function renderAlloc(){document.getElementById('alloc').innerHTML=stocks.map(s=>`<div class="alloc-row"><b>${s.t}</b><div class="bar"><span style="width:${s.w*4.5}%"></span></div><span>${s.w}%</span></div>`).join('');}
 function renderGroups(){
- document.getElementById('groups').innerHTML=[1,2,3].map(m=>{
-  const total=groupWeights[m], arr=groups[m];
-  return `<div class="group"><h3>المجموعة ${m} — الشهر ${m}</h3><ul>${arr.map(t=>{const s=stocks.find(x=>x.t===t);return `<li><b>${t}</b> — ${money(5000*s.w/total)}</li>`}).join('')}</ul><div class="total">إجمالي الشهر: 5,000 جنيه</div></div>`;
- }).join('');
+ const box=document.getElementById('groups'); if(!box)return;
+ box.innerHTML=[1,2,3].map(m=>{const total=groupWeights[m],arr=groups[m];return `<div class="group"><h3>المجموعة ${m} — الشهر ${m}</h3><ul>${arr.map(t=>{const s=stocks.find(x=>x.t===t);return `<li><b>${t}</b> — وزن أساسي ${s.w}%</li>`}).join('')}</ul><div class="total">هذه الأوزان مرجعية فقط؛ التوصية الشهرية لا تعتمد على مجموعة ثابتة.</div></div>`}).join('');
 }
 function renderPositions(){
  const pv=+document.getElementById('portfolio').value||0;
  const tb=document.getElementById('positions');
  tb.innerHTML=stocks.map(s=>{
-   const val=positions[s.t]??0;
+   const val=positions[s.t]??Math.round(pv*s.w/100);
    const actual=pv?val/pv*100:0;
    return `<tr><td style="padding:7px;border-top:1px solid #24354c"><b>${s.t}</b></td><td style="border-top:1px solid #24354c">${s.w}%</td><td style="border-top:1px solid #24354c"><input style="width:125px;background:#071321;border:1px solid #24354c;color:#fff;border-radius:7px;padding:6px" type="number" value="${Math.round(val)}" onchange="setPosition('${s.t}',this.value)"></td><td style="border-top:1px solid #24354c">${actual.toFixed(2)}%</td></tr>`;
  }).join('');
 }
-function setPosition(t,v){positions[t]=+v||0;localStorage.setItem('positions12_v2',JSON.stringify(positions));renderPositions();chooseSell()}
+function setPosition(t,v){positions[t]=+v||0;localStorage.setItem('positions12',JSON.stringify(positions));renderPositions();chooseSell()}
 function chooseSell(){
  const pv=+document.getElementById('portfolio').value||0;
  const rate=+document.getElementById('rate').value||0;
  const sellAmount=pv*rate/100/12;
  let best=null;
  stocks.forEach(s=>{
-   const val=positions[s.t]??0;
+   const val=positions[s.t]??pv*s.w/100;
    const actual=pv?val/pv*100:0;
    const excess=actual-s.w;
    const score=excess*8 + Math.max(0,s.c)*0.5;
@@ -387,88 +344,21 @@ function chooseSell(){
 const API_PROXY='/api/egx';
 let liveConnected=false;
 let egx30={value:null,change:null,open:null,high:null,low:null};
-let lastLiveUpdate=Number(localStorage.getItem('egx_last_update')||0);
-let lastMarketSession=localStorage.getItem('egx_last_session')||'';
-let autoTimer=null;
-const FIVE_MIN=5*60*1000;
-
-function cairoNow(){return new Date(new Date().toLocaleString('en-US',{timeZone:'Africa/Cairo'}));}
-function marketInfo(){
- const d=cairoNow(), day=d.getDay(), mins=d.getHours()*60+d.getMinutes();
- // EGX regular trading: Sunday-Thursday, 10:00-14:30 Cairo time.
- const weekday=day>=0&&day<=4;
- const open=weekday && mins>=600 && mins<870;
- const date=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
- return {d,mins,open,date};
-}
 function setApiStatus(text){const a=document.getElementById('apiConnectionStatus'),b=document.getElementById('dataStatus');if(a)a.textContent=text;if(b)b.textContent=text;}
-function setMarketStatus(){
- const m=marketInfo(), el=document.getElementById('marketStatus');
- if(!el)return m;
- if(m.open) el.textContent='🟢 السوق مفتوح — التحديث التلقائي كل 5 دقائق.';
- else if(m.d.getDay()>=0&&m.d.getDay()<=4&&m.mins<600) el.textContent='🕘 السوق لم يفتح بعد — آخر جلسة محفوظة ستظل ثابتة.';
- else el.textContent='🔴 السوق مغلق — لا توجد تحديثات جديدة. المعروض هو آخر جلسة مكتملة.';
- return m;
-}
-function renderEGX30(){const v=document.getElementById('egx30Value'),c=document.getElementById('egx30Change'),o=document.getElementById('egx30Open'),hl=document.getElementById('egx30HighLow');if(!v)return;v.textContent=Number.isFinite(egx30.value)?egx30.value.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';if(Number.isFinite(egx30.change)){const sign=egx30.change>0?'+':'';c.textContent=`${egx30.change>0?'↑':egx30.change<0?'↓':'→'} ${sign}${egx30.change.toFixed(2)}% اليوم`;c.className='index-change '+(egx30.change>=0?'green':'red')}else{c.textContent='لا توجد بيانات محفوظة بعد';c.className='index-change muted'}o.textContent=Number.isFinite(egx30.open)?egx30.open.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';hl.textContent=(Number.isFinite(egx30.high)&&Number.isFinite(egx30.low))?`${egx30.high.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} / ${egx30.low.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`:'—';}
-function canManualRefresh(){
- const m=marketInfo();
- if(!m.open){
-   if(lastMarketSession) return {ok:false,msg:'السوق مغلق — البيانات بالفعل لآخر جلسة مكتملة.'};
-   return {ok:false,msg:'السوق مغلق — لا توجد جلسة جديدة للتحديث الآن.'};
- }
- if(Date.now()-lastLiveUpdate<FIVE_MIN){
-   const left=Math.ceil((FIVE_MIN-(Date.now()-lastLiveUpdate))/60000);
-   return {ok:false,msg:`تم التحديث بالفعل. التحديث التالي متاح بعد حوالي ${left} دقيقة.`};
- }
- return {ok:true};
-}
-async function refreshLive(forceAuto=false){
- setMarketStatus();
- const m=marketInfo();
- if(!m.open){setApiStatus(lastMarketSession?'🔒 السوق مغلق — تم حفظ آخر جلسة بالفعل.':'🔒 السوق مغلق — لا يوجد تحديث جديد الآن.');return false;}
- if(!forceAuto){const gate=canManualRefresh();if(!gate.ok){setApiStatus(gate.msg);alert(gate.msg);return false;}}
- setApiStatus('⏳ جاري تحديث EGX 30 والأسهم الحقيقية…');
- try{
-  const codes=stocks.map(s=>s.t).join(',');
-  const [quotesRes,indexRes]=await Promise.all([
-   fetch(API_PROXY+'?type=quote&codes='+encodeURIComponent(codes),{headers:{'Accept':'application/json'}}),
-   fetch(API_PROXY+'?type=index&name=EGX30',{headers:{'Accept':'application/json'}})
-  ]);
-  if(!quotesRes.ok)throw new Error('Quotes HTTP '+quotesRes.status);
-  if(!indexRes.ok)throw new Error('Index HTTP '+indexRes.status);
-  const raw=await quotesRes.json(),idx=await indexRes.json(),quotes=raw?.data?.quotes||raw?.quotes||[];
-  let ok=0;
-  quotes.forEach(q=>{const s=stocks.find(x=>x.t===q.ticker);if(s&&Number.isFinite(Number(q.price))){s.p=Number(q.price);s.c=Number(q.change_percent??q.changePct??q.percent_change??0)||0;ok++;}});
-  const d=idx?.data||idx;
-  egx30={value:Number(d?.value),change:Number(d?.change_percent??d?.changePct??d?.percent_change),open:Number(d?.open),high:Number(d?.high),low:Number(d?.low)};
-  if(!Number.isFinite(egx30.value))throw new Error('EGX30 value missing');
-  lastLiveUpdate=Date.now();lastMarketSession=m.date;
-  localStorage.setItem('egx_last_update',String(lastLiveUpdate));localStorage.setItem('egx_last_session',lastMarketSession);
-  localStorage.setItem('stocks_live_cache',JSON.stringify(stocks.map(s=>({t:s.t,p:s.p,c:s.c}))));
-  localStorage.setItem('egx30_live_cache',JSON.stringify(egx30));
-  liveConnected=true;renderEGX30();renderStocks();renderRecommendations();renderGroups();updateAll();
-  setApiStatus(`✅ تم التحديث بنجاح — ${ok} سهم + EGX 30 · ${new Date().toLocaleTimeString('ar-EG')}`);
-  return true;
- }catch(e){liveConnected=false;renderEGX30();setApiStatus('❌ فشل التحديث — راجع OANOR_API_KEY واتصال السيرفر.');alert('فشل تحديث بيانات EGX: '+e.message+'\n\nتأكد أن OANOR_API_KEY مضاف للسيرفر.');return false;}
-}
-function loadLiveCache(){try{const c=JSON.parse(localStorage.getItem('stocks_live_cache')||'[]');c.forEach(x=>{const s=stocks.find(a=>a.t===x.t);if(s&&Number.isFinite(+x.p)){s.p=+x.p;s.c=+x.c||0;}});const i=JSON.parse(localStorage.getItem('egx30_live_cache')||'null');if(i&&Number.isFinite(+i.value)){egx30={value:+i.value,change:Number.isFinite(+i.change)?+i.change:null,open:Number.isFinite(+i.open)?+i.open:null,high:Number.isFinite(+i.high)?+i.high:null,low:Number.isFinite(+i.low)?+i.low:null};renderEGX30();}lastLiveUpdate=Number(localStorage.getItem('egx_last_update')||0);lastMarketSession=localStorage.getItem('egx_last_session')||'';}catch(e){}}
-function startMarketTimer(){
- clearInterval(autoTimer);
- autoTimer=setInterval(()=>{
-  const m=setMarketStatus();
-  if(m.open){if(Date.now()-lastLiveUpdate>=FIVE_MIN)refreshLive(true);}else{setApiStatus(lastMarketSession?'🔒 السوق مغلق — آخر جلسة محفوظة.':'🔒 السوق مغلق — لا توجد جلسة مفتوحة.');}
- },60000);
- const m=setMarketStatus();
- if(m.open && Date.now()-lastLiveUpdate>=FIVE_MIN)refreshLive(true);
+function renderEGX30(){const v=document.getElementById('egx30Value'),c=document.getElementById('egx30Change'),o=document.getElementById('egx30Open'),hl=document.getElementById('egx30HighLow');if(!v)return;v.textContent=Number.isFinite(egx30.value)?egx30.value.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';if(Number.isFinite(egx30.change)){const sign=egx30.change>0?'+':'';c.textContent=`${egx30.change>0?'↑':'↓'} ${sign}${egx30.change.toFixed(2)}% اليوم`;c.className='index-change '+(egx30.change>=0?'green':'red')}else{c.textContent='في انتظار البيانات الحقيقية…';c.className='index-change muted'}o.textContent=Number.isFinite(egx30.open)?egx30.open.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';hl.textContent=(Number.isFinite(egx30.high)&&Number.isFinite(egx30.low))?`${egx30.high.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} / ${egx30.low.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`:'—';}
+async function refreshLive(){setApiStatus('جاري جلب أسعار الأسهم + مؤشر EGX 30…');try{const codes=stocks.map(s=>s.t).join(',');const [quotesRes,indexRes]=await Promise.all([fetch(API_PROXY+'?type=quote&codes='+encodeURIComponent(codes),{headers:{'Accept':'application/json'}}),fetch(API_PROXY+'?type=index&name=EGX30',{headers:{'Accept':'application/json'}})]);if(!quotesRes.ok)throw new Error('Quotes HTTP '+quotesRes.status);if(!indexRes.ok)throw new Error('Index HTTP '+indexRes.status);const raw=await quotesRes.json(),idx=await indexRes.json(),quotes=raw?.data?.quotes||raw?.quotes||[];let ok=0;quotes.forEach(q=>{const s=stocks.find(x=>x.t===q.ticker);if(s&&Number.isFinite(Number(q.price))){s.p=Number(q.price);s.c=Number(q.change_percent??q.changePct??q.percent_change??0)||0;ok++;}});const d=idx?.data||idx;egx30={value:Number(d?.value),change:Number(d?.change_percent??d?.changePct??d?.percent_change),open:Number(d?.open),high:Number(d?.high),low:Number(d?.low)};if(!Number.isFinite(egx30.value))throw new Error('EGX30 value missing');localStorage.setItem('stocks_live_cache',JSON.stringify(stocks.map(s=>({t:s.t,p:s.p,c:s.c}))));localStorage.setItem('egx30_live_cache',JSON.stringify(egx30));liveConnected=true;renderEGX30();renderStocks();renderRecommendations();renderGroups();updateAll();setApiStatus(`متصل ✓ — تم تحديث ${ok} سهم + EGX 30 · ${new Date().toLocaleTimeString('ar-EG')}`);}catch(e){liveConnected=false;renderEGX30();setApiStatus('تعذر تحديث البيانات الحقيقية — راجع OANOR_API_KEY واتصال السيرفر.');alert('فشل تحديث بيانات EGX: '+e.message+'\n\nتأكد أن متغير البيئة اسمه OANOR_API_KEY وأنه مضاف للسيرفر.');}}
+function loadLiveCache(){
+ try{const c=JSON.parse(localStorage.getItem('stocks_live_cache')||'[]');c.forEach(x=>{const s=stocks.find(a=>a.t===x.t);if(s&&Number.isFinite(+x.p)){s.p=+x.p;s.c=+x.c||0;}});const i=JSON.parse(localStorage.getItem('egx30_live_cache')||'null');if(i&&Number.isFinite(+i.value)){egx30={value:+i.value,change:Number.isFinite(+i.change)?+i.change:null,open:Number.isFinite(+i.open)?+i.open:null,high:Number.isFinite(+i.high)?+i.high:null,low:Number.isFinite(+i.low)?+i.low:null};renderEGX30();}}catch(e){}
 }
 
 function resetDemo(){
- alert('لن يتم استبدال الأسعار الحقيقية ببيانات تجريبية. استخدم زر تحديث EGX الحقيقي أثناء السوق المفتوح.');
+ liveConnected=false;
+ setApiStatus('بيانات تجريبية — اضغط تحديث لجلب الأسعار الحقيقية.');
+ stocks.forEach((s,i)=>{s.p=[85.30,42.15,33.80,5.75,56.40,68.90,39.15,28.60,18.75,15.20,85.10,24.30][i];s.c=[1.43,-.82,2.11,1.77,-.79,1.17,2.48,-1.04,1.35,-.98,1.07,-.82][i]});
+ renderStocks();
 }
 function toggleTheme(){document.body.classList.toggle('light');if(document.body.classList.contains('light')){document.body.style.filter='invert(.93) hue-rotate(180deg)';}else{document.body.style.filter='none'}}
-loadLiveCache(); loadFundsCache(); renderEGX30(); renderStocks();renderFundsAllocation();renderAlloc();renderGroups();renderRecommendations();updateAll();setMarketStatus();startMarketTimer();
-const todayFunds=cairoDateString(); if(!fundLastDate || !fundLastDate.startsWith(todayFunds)) refreshFunds(false);
+loadLiveCache(); renderEGX30(); renderStocks();renderAlloc();renderGroups();renderRecommendations();updateAll();
 </script>
 </body>
 </html>
